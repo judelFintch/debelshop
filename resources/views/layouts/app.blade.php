@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DebelShop Test</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <link rel="stylesheet" href="{{asset('assets/app.css')}}">
 </head>
 <body class="antialiased">
 
@@ -31,5 +31,7 @@
 
     </div>
 </footer>
+
+<link rel="stylesheet" href="{{asset('assets/app.js')}}">
 </body>
 </html>

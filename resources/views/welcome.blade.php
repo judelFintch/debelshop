@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DebelShop Test</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <link rel="stylesheet" href="{{asset('assets/app.css')}}">
+
+
 </head>
 <body class="antialiased">
 
@@ -83,7 +85,7 @@
                 </p>
             </a>
             <a href="#">
-                <img src="{{ asset('img/2.jpg') }}" class="rounded-lg hover:brightness-50 transition-all ease-in-out duration-300" alt="">
+                <img src="{{ asset('img/2.jpg') }}" class="rounded-lg " alt="">
                 <div class="flex items-center justify-between pt-4">
                     <h2 class="text-lg font-semibold">Vehicule de luxe</h2>
                     <span class="bg-blue-200 rounded-full font-black text-base px-2 py-0.5">11500 $</span>

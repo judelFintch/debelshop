@@ -19,7 +19,7 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-7">
             @foreach($products as $product)
                 <a href="{{ route('show-product', $product->id) }}" wire:navigate>
-                    <img src="{{ $product->image  }}" class="rounded-lg hover:brightness-50 transition-all ease-in-out duration-300" alt="">
+                    <img src="{{ asset('img/' . $product->id . '.jpg') }}" class="rounded-lg hover:brightness-50 transition-all ease-in-out duration-300" alt="">
                     <div class="flex items-center justify-between pt-4">
                         <h2 class="text-lg font-semibold">{{ $product->title }}</h2>
                         <span class="bg-blue-200 rounded-full font-black text-base px-2 py-0.5">{{ $product->price }} $</span>
