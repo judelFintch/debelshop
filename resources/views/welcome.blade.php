@@ -7,6 +7,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="antialiased">
+
     <header class="mx-auto max-w-5xl">
         <nav class="flex items-center justify-between py-8">
             <a href="" class="text-lg font-semibold">
@@ -40,7 +41,37 @@
         <div class="py-6 pb-10">
             <h1 class="text-6xl font-bold leading-tight tracking-tight">Nos vehicules</h1>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-x-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-7">
+            <a href="#">
+                <img src="{{ asset('img/1.jpg') }}" class="rounded-lg hover:brightness-50 transition-all ease-in-out duration-300" alt="">
+                <div class="flex items-center justify-between pt-4">
+                    <h2 class="text-lg font-semibold">Vehicule de luxe</h2>
+                    <span class="bg-blue-200 rounded-full font-black text-base px-2 py-0.5">7500 $</span>
+                </div>
+                <p class="text-gray-600 text-sm justify-around">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                </p>
+            </a>
+            <a href="#">
+                <img src="{{ asset('img/2.jpg') }}" class="rounded-lg hover:brightness-50 transition-all ease-in-out duration-300" alt="">
+                <div class="flex items-center justify-between pt-4">
+                    <h2 class="text-lg font-semibold">Vehicule de luxe</h2>
+                    <span class="bg-blue-200 rounded-full font-black text-base px-2 py-0.5">11500 $</span>
+                </div>
+                <p class="text-gray-600 text-sm justify-around">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                </p>
+            </a>
+            <a href="#">
+                <img src="{{ asset('img/1.jpg') }}" class="rounded-lg hover:brightness-50 transition-all ease-in-out duration-300" alt="">
+                <div class="flex items-center justify-between pt-4">
+                    <h2 class="text-lg font-semibold">Vehicule de luxe</h2>
+                    <span class="bg-blue-200 rounded-full font-black text-base px-2 py-0.5">5500 $</span>
+                </div>
+                <p class="text-gray-600 text-sm justify-around">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                </p>
+            </a>
             <a href="#">
                 <img src="{{ asset('img/1.jpg') }}" class="rounded-lg hover:brightness-50 transition-all ease-in-out duration-300" alt="">
                 <div class="flex items-center justify-between pt-4">
@@ -73,5 +104,10 @@
             </a>
         </div>
     </section>
+    <footer class="mx-auto max-w-5xl py-20">
+        <div>
+
+        </div>
+    </footer>
 </body>
 </html>
