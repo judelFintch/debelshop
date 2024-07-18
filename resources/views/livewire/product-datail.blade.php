@@ -1,14 +1,14 @@
 <div>
     <div class="mx-auto max-w-5xl">
         <div class="flex items-start gap-x-8">
-            <img src="{{ $product->image }}" alt=" {{ $product->title }}">
+            <img src="{{ asset('img/' . $product->id . '.jpg') }}" alt=" {{ $product->title }}">
             <div class="space-y-6">
                 <div class="flex items-center justify-between">
                     <h2 class="text-3xl font-bold uppercase">{{ $product->title }}</h2>
                     <span class="bg-blue-800 text-white px-2 py-1 rounded-full font-bold">{{ $product->price }} $</span>
                 </div>
 
-                <p class="text-base text-gray-600 leading-tight tracking-tight">{{ $product->description }}</p>
+                
 
                 <form method="post" action="{{ route('process') }}">
                     @csrf
@@ -16,6 +16,7 @@
                         <label for="merchant" class="text-gray-600 font-bold">Marchant</label>
                         <input type="text" class="w-full border border-gray-200 px-4 py-2 rounded" placeholder="Marchant" wire:model="merchant" name="merchant" id="merchant">
                     </div>
+
                     <div class="space-y-1">
                         <label for="reference" class="text-gray-600 font-bold">Reference</label>
                         <input type="text" class="w-full border border-gray-200 px-4 py-2 rounded" placeholder="reference" wire:model="reference" name="reference" id="reference">
