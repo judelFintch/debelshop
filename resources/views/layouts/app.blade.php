@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DebelShop Test</title>
-    <link rel="stylesheet" href="{{asset('assets/app.css')}}">
+   
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body class="antialiased">
 
@@ -24,14 +25,17 @@
     </nav>
 </header>
 
+<body class="bg-gray-100 antialiased">
+
 {{ $slot }}
+
+</body>
 
 <footer class="mx-auto max-w-5xl py-20">
     <div>
 
     </div>
 </footer>
-
-<link rel="stylesheet" href="{{asset('assets/app.js')}}">
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 </body>
 </html>
