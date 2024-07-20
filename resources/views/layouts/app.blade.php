@@ -64,7 +64,7 @@
             if (!sessionStorage.getItem('alertShown')) {
                 Swal.fire({
                     title: 'Attention',
-                    text: 'This site is currently in a testing phase and is not yet an official site. You may encounter technical errors or incomplete features.',
+                    text: 'This site is just a test module and is not the official site. You may encounter technical errors or incomplete features.',
                     confirmButtonText: 'I understand',
                     background: '#f9fafb',
                     customClass: {
@@ -92,7 +92,7 @@
 
  <!-- Temporary Notification -->
  <div id="temp-notification" class="notification bg-red-500 text-white p-4 rounded-lg shadow-lg transition-opacity duration-1000">
-        <p class="text-base">Ce site est actuellement en phase de test et n'est pas encore un site officiel. Il est possible que vous rencontriez des erreurs techniques ou des fonctionnalités incomplètes.</p>
+        <p class="text-base">This site is just a test module and is not the official site. You may encounter technical errors or incomplete features..</p>
     </div>
 
 <footer class="mx-auto max-w-5xl py-20">
@@ -100,7 +100,8 @@
     <footer class="bg-gray-800 text-white py-6 mt-8">
     <div class="max-w-5xl mx-auto text-center">
         <p class="text-sm">&copy; 2024 DebelShop. Tous droits réservés.</p>
-        <p class="text-sm mt-2">Ce site est fourni uniquement à titre de test et ne doit pas être considéré comme un site officiel.</p>
+        <p class="text-sm mt-2">Ce site n'est qu'un module de test et n'est pas le site officiel. Vous pourriez rencontrer des erreurs techniques ou des fonctionnalités incomplètes..<br>
+        This site is just a test module and is not the official site. You may encounter technical errors or incomplete features.</p>
     </div>
 </footer>
 

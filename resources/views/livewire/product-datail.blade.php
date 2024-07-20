@@ -14,20 +14,20 @@
                 @csrf
                 <div class="space-y-2">
                     <label for="merchant" class="text-gray-600 font-bold">Marchant</label>
-                    <input type="text" class="w-full border border-gray-300 px-4 py-2 rounded-lg" placeholder="Nom du Marchant" wire:model="merchant" name="merchant" id="merchant">
+                    <input type="text" readonly class="w-full border border-gray-300 px-4 py-2 rounded-lg" placeholder="Nom du Marchant" wire:model="merchant" name="merchant" id="merchant">
                 </div>
                 <div class="space-y-2">
                     <label for="reference" class="text-gray-600 font-bold">Référence</label>
-                    <input type="text" class="w-full border border-gray-300 px-4 py-2 rounded-lg" placeholder="Référence" wire:model="reference" name="reference" id="reference">
+                    <input type="text" readonly class="w-full border border-gray-300 px-4 py-2 rounded-lg" placeholder="Référence" wire:model="reference" name="reference" id="reference">
                 </div>
                 <div class="space-y-2">
                     <label for="amount" class="text-gray-600 font-bold">Prix</label>
-                    <input type="text" class="w-full border border-gray-300 px-4 py-2 rounded-lg" wire:model="amount" value="{{ $product->price }}" placeholder="Prix" name="amount" id="amount">
+                    <input type="text" readonly  class="w-full border border-gray-300 px-4 py-2 rounded-lg" wire:model="amount" value="{{ $product->price }}" placeholder="Prix" name="amount" id="amount">
                 </div>
                 <div class="space-y-2">
                     <label for="currency" class="text-gray-600 font-bold">Devise</label>
                     <select name="currency" id="currency" wire:model="currency" class="w-full border border-gray-300 px-4 py-2 rounded-lg">
-                        <option>Choisir la devise</option>
+                   
                         <option value="USD">USD</option>
                     </select>
                 </div>

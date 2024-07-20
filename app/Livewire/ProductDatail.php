@@ -9,6 +9,8 @@ use Illuminate\View\View;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
+use Illuminate\Support\Str;
+
 
 #[Layout('layouts.app')]
 class ProductDatail extends Component
@@ -38,6 +40,10 @@ class ProductDatail extends Component
     public function mount(Product $product): void
     {
         $this->product = $product;
+        
+        $this -> merchant = 'CONNECTME';
+        $this -> amount = $this->product->price;
+        $this->reference = 'DEBL-SHOP' . Str::random(10);
     }
     public function render(): View
     {
