@@ -7,7 +7,7 @@
    
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body class="antialiased">
+<body>
 
 <header class="mx-auto max-w-5xl">
     <nav class="flex items-center justify-between py-8">
@@ -25,11 +25,11 @@
     </nav>
 </header>
 
-<body class="bg-gray-100 antialiased">
+
 
 {{ $slot }}
 
-</body>
+
 
 <footer class="mx-auto max-w-5xl py-20">
     <div>
