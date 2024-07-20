@@ -6,9 +6,9 @@
     <title>DebelShop Test</title>
    
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <!-- SweetAlert2 CSS -->
+   
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
-    <!-- SweetAlert2 JS -->
+   
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 </head>
 <body>
@@ -44,14 +44,28 @@
     </nav>
 </header>
 
-<script>
+
+
+
+<style>
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: none; /* Hidden by default */
+            max-width: 300px; /* Adjust the width as needed */
+            padding: 12px;
+        }
+    </style>
+    <script>
         document.addEventListener('DOMContentLoaded', (event) => {
+            // Display the SweetAlert2 notification only once per session
             if (!sessionStorage.getItem('alertShown')) {
                 Swal.fire({
                     title: 'Attention',
-                    text: 'Ce site est fourni uniquement à titre de test et ne doit pas être considéré comme un site officiel.',
-                    icon: 'warning',
-                    confirmButtonText: 'J\'ai compris',
+                    text: 'This site is currently in a testing phase and is not yet an official site. You may encounter technical errors or incomplete features.',
+                    confirmButtonText: 'I understand',
                     background: '#f9fafb',
                     customClass: {
                         popup: 'rounded-lg shadow-lg'
@@ -61,12 +75,25 @@
                     sessionStorage.setItem('alertShown', 'true');
                 });
             }
+
+            // Display the temporary notification
+            const notification = document.getElementById('temp-notification');
+            notification.style.display = 'block';
+            setTimeout(() => {
+                notification.style.opacity = '0';
+                setTimeout(() => {
+                    notification.style.display = 'none';
+                }, 1000); // Delay to match opacity transition
+            }, 10000); // Display for 5 seconds
         });
     </script>
 
 {{ $slot }}
 
-
+ <!-- Temporary Notification -->
+ <div id="temp-notification" class="notification bg-red-500 text-white p-4 rounded-lg shadow-lg transition-opacity duration-1000">
+        <p class="text-base">Ce site est actuellement en phase de test et n'est pas encore un site officiel. Il est possible que vous rencontriez des erreurs techniques ou des fonctionnalités incomplètes.</p>
+    </div>
 
 <footer class="mx-auto max-w-5xl py-20">
     <div>
