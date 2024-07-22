@@ -49,8 +49,18 @@
 
         quantityInputs.forEach(input => {
             input.addEventListener('input', function() {
+                let quantity = parseInt(this.value);
                 const price = parseFloat(this.dataset.price);
-                const quantity = parseInt(this.value);
+
+                // Ensure the quantity does not exceed 2
+                if (quantity > 2) {
+                    quantity = 2;
+                    this.value = 2;
+                } else if (quantity < 1 || isNaN(quantity)) {
+                    quantity = 1;
+                    this.value = 1;
+                }
+
                 const total = (price * quantity).toFixed(2);
                 const totalElement = document.getElementById('total-' + this.id.split('-')[1]);
                 totalElement.textContent = total + ' $';
