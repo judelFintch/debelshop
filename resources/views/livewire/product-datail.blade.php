@@ -1,4 +1,6 @@
 <div class="mx-auto max-w-5xl p-4">
+
+
     <div class="flex flex-col md:flex-row items-start gap-8">
         <img src="{{ asset('img/' . $product->id . '.jpg') }}" alt="{{ $product->title }}" class="w-full md:w-1/2 rounded-lg shadow-lg">
         <div class="space-y-6 w-full md:w-1/2">
@@ -7,23 +9,34 @@
                 <span class="bg-blue-800 text-white px-4 py-2 rounded-full font-bold text-xl">{{ $product->price }} $</span>
             </div>
             <div class="text-gray-700 leading-relaxed">
-                <p>Améliorez votre espace de travail et augmentez la durée de vie de votre laptop avec notre support de laptop réglable, équipé de ventilateurs de refroidissement intégrés.</p>
+                <p>Améliorez votre espace de travail et augmentez la durée de vie de votre laptop avec notre support de laptop réglable, </p>
                 
             </div>
             <form method="post" action="{{ route('process') }}" class="space-y-4">
                 @csrf
                 <div class="space-y-2">
-                    <label for="merchant" class="text-gray-600 font-bold">Marchant</label>
-                    <input type="text" readonly class="w-full border border-gray-300 px-4 py-2 rounded-lg" placeholder="Nom du Marchant" wire:model="merchant" name="merchant" id="merchant">
+                   
+                    <input type="hidden" readonly class="w-full border border-gray-300 px-4 py-2 rounded-lg" placeholder="Nom du Marchant" wire:model="merchant" name="merchant" id="merchant">
                 </div>
                 <div class="space-y-2">
                     <label for="reference" class="text-gray-600 font-bold">Référence</label>
                     <input type="text" readonly class="w-full border border-gray-300 px-4 py-2 rounded-lg" placeholder="Référence" wire:model="reference" name="reference" id="reference">
                 </div>
                 <div class="space-y-2">
-                    <label for="amount" class="text-gray-600 font-bold">Prix</label>
+                    <label for="amount" class="text-gray-600 font-bold">Prix U</label>
+                    <input type="text" readonly  class="w-full border border-gray-300 px-4 py-2 rounded-lg" wire:model="price_unity " value="{{ $product->price }}" placeholder="Prix" name="amount" id="amount">
+                </div>
+
+                <div class="space-y-2">
+                    <label for="amount" class="text-gray-600 font-bold">Quantité</label>
+                    <input type="text" readonly  class="w-full border border-gray-300 px-4 py-2 rounded-lg" wire:model="quantity" value="{{ $product->price }}" placeholder="Prix" name="amount" id="amount">
+                </div>
+
+                <div class="space-y-2">
+                    <label for="amount" class="text-gray-600 font-bold">Total</label>
                     <input type="text" readonly  class="w-full border border-gray-300 px-4 py-2 rounded-lg" wire:model="amount" value="{{ $product->price }}" placeholder="Prix" name="amount" id="amount">
                 </div>
+
                 <div class="space-y-2">
                     <label for="currency" class="text-gray-600 font-bold">Devise</label>
                     <select name="currency" id="currency" wire:model="currency" class="w-full border border-gray-300 px-4 py-2 rounded-lg">

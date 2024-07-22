@@ -10,6 +10,7 @@ use Livewire\Attributes\Layout;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 
 
 #[Layout('layouts.app')]
@@ -35,14 +36,28 @@ class ProductDatail extends Component
     #[Validate([
         'required'
     ])]
-    public ?string $currency = '';
 
-    public function mount(Product $product): void
+    //betises
+    public $quantity ;
+    public $total = 0 ;
+    public $price_unity;
+   
+    public ?string $currency = ''; 
+
+    public function mount(Request $request, Product $product): void
     {
+
+        $this->quantity = $request->query('quantity', 1); 
+        $this->total = $request->query('total', $this->product->price); 
+
         $this->product = $product;
         $this -> merchant = 'CONNECTME';
-        $this -> amount = $this->product->price;
+        $this ->price_unity = $this->product->price;
+        $this -> amount = $this->quantity * $this->product->price;
         $this->reference = 'DEBL-SHOP' . Str::random(10);
+
+       
+    
     }
     public function render(): View
     {
