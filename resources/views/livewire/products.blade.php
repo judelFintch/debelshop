@@ -27,7 +27,7 @@
                 </a>
                 <div class="mt-4">
                     <label for="quantity-{{ $product->id }}" class="block text-sm font-medium text-gray-700">Quantité</label>
-                    <input type="number" id="quantity-{{ $product->id }}" name="quantity" min="1" value="1" class="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm quantity-input" data-price="{{ $product->price }}" data-product-id="{{ $product->id }}">
+                    <input type="number" max="2" id="quantity-{{ $product->id }}" name="quantity" min="1" value="1" class="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm quantity-input" data-price="{{ $product->price }}" data-product-id="{{ $product->id }}">
                 </div>
                 <div class="mt-2">
                     <span class="text-gray-700">Total: </span>

@@ -49,7 +49,6 @@ class ProductDatail extends Component
 
         $this->quantity = $request->query('quantity', 1); 
         $this->total = $request->query('total', $this->product->price); 
-
         $this->product = $product;
         $this -> merchant = 'CONNECTME';
         $this ->price_unity = $this->product->price;
