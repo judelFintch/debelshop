@@ -40,7 +40,6 @@ class ProductDatail extends Component
     public function mount(Product $product): void
     {
         $this->product = $product;
-        
         $this -> merchant = 'CONNECTME';
         $this -> amount = $this->product->price;
         $this->reference = 'DEBL-SHOP' . Str::random(10);
