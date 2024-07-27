@@ -41,22 +41,19 @@ class ProductDatail extends Component
     public $quantity ;
     public $total = 0 ;
     public $price_unity;
-   
+
     public ?string $currency = ''; 
 
     public function mount(Request $request, Product $product): void
     {
-
         $this->product = $product;
         $this->price_unity = $this->product->price;
         $this->merchant = 'CONNECTME';
         $this->reference = 'DEBL-SHOP' . Str::random(10);
-        
         // Valider la quantité reçue pour ne pas dépasser 2
         $this->quantity = min($request->query('quantity', 1), 2);
         $this->total = $this->quantity * $this->product->price;
         $this->amount = $this->total;
-    
     }
     public function render(): View
     {

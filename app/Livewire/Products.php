@@ -22,7 +22,7 @@ class Products extends Component
     {
         // Définir les nouveaux prix pour les produits avec les IDs spécifiés
         Product::whereIn('id', [1, 2])->update(['price' => 100]);
-        Product::where('id', 3)->update(['price' => 50]);
+        Product::where('id', 3)->update(['price' => 13]);
     }
     public function render(): View
     {
