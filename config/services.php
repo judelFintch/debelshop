@@ -35,4 +35,12 @@ return [
         ],
     ],
 
+    'maxicash' => [
+        'merchant_id' => env('MAXICASH_MERCHANT_ID'),
+        'merchant_password' => env('MAXICASH_MERCHANT_SECRET'),
+        'accept_payment_url' => env('MAXICASH_ACCEPT_PAYMENT_URL'),
+        'cancel_payment_url' => env('MAXICASH_CANCEL_PAYMENT_URL'),
+        'notification_url' => env('MAXICASH_NOTIFICATION_URL'),
+    ]
+
 ];

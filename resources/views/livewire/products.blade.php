@@ -1,14 +1,31 @@
 <div>
-    <div class="mx-auto max-w-5xl relative">
-        <img
-            src="{{ asset('img/banner.jpg') }}"
-            alt="images de banner"
-            class="w-full h-96 object-cover rounded-lg border border-gray-200 brightness-50"
-        >
-        <div class="absolute inset-0 py-16 mx-auto max-w-2xl">
-            <h1 class="text-7xl font-bold tracking-tight mt-8 text-white text-center">
-                Découvrez notre <span class="bg-transparent bg-clip-text bg-gradient-to-tr from-blue-600 to-blue-800">collection</span>
-            </h1>
+    <div class="mx-auto max-w-5xl">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-4">
+            <div class="relative">
+                <img src="{{ asset('img/banner.jpg') }}" class="h-[400px] object-cover object-center rounded-lg" alt="">
+                <div class="absolute inset-0 p-4 flex items-end">
+                    <div class="p-4 rounded-lg bg-gray-600/40 w-full backdrop-blur-lg space-y-1">
+                        <div class="flex items-center justify-between">
+                            <h1 class="text-white font-bold text-base leading-loose">Macbook Air M2</h1>
+                            <span class="text-white font-bold text-base leading-loose">900$</span>
+                        </div>
+
+                        <p class="text-gray-100 font-medium leading-5 text-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores fuga harum</p>
+                    </div>
+                </div>
+            </div>
+            <div class="relative">
+                <img src="{{ asset('img/banner.jpg') }}" class="h-[400px] object-cover object-center rounded-lg" alt="">
+                <div class="absolute inset-0 top-0 left-0 p-4">
+                    <h1 class="text-white font-bold text-base leading-loose">Macbook Air M2</h1>
+                </div>
+            </div>
+            <div class="relative">
+                <img src="{{ asset('img/banner.jpg') }}" class="h-[400px] object-cover object-center rounded-lg" alt="">
+                <div class="absolute inset-0 top-0 left-0 p-4">
+                    <h1 class="text-white font-bold text-base leading-loose">Macbook Air M2</h1>
+                </div>
+            </div>
         </div>
     </div>
 

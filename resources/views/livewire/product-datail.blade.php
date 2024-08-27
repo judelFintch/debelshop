@@ -10,8 +10,7 @@
 
                 <p class="text-base text-gray-600 leading-tight tracking-tight">{{ $product->description }}</p>
 
-                <form method="post" action="{{ route('process') }}">
-                    @csrf
+                <form wire:submit.prevent="submit">
                     <div class="space-y-1">
                         <label for="merchant" class="text-gray-600 font-bold">Marchant</label>
                         <input type="text" class="w-full border border-gray-200 px-4 py-2 rounded" placeholder="Marchant" wire:model="merchant" name="merchant" id="merchant">
