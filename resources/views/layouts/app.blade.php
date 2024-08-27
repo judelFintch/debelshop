@@ -8,7 +8,7 @@
 </head>
 <body class="antialiased bg-gray-50 font-roboto">
 
-<header class="mx-auto max-w-6xl">
+<header class="mx-auto max-w-5xl">
     <nav class="py-6">
         <div class="flex items-center justify-between border border-gray-200 bg-white px-6 py-3 rounded-xl shadow-sm">
             <a class="text-lg font-bold leading-snug tracking-tight" href="{{ route('products') }}">Debel <span class="text-purple-700">Shop</span></a>
