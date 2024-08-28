@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@import "@splidejs/splide/dist/css/splide.min.css";
+@import "@splidejs/splide/dist/css/splide-core.min.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

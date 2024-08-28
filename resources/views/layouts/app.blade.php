@@ -36,9 +36,33 @@
 
 {{ $slot }}
 
-<footer class="mx-auto max-w-5xl py-20">
-    <div>
-
+<footer class="mx-auto max-w-5xl pt-32 pb-6 space-y-4">
+    <div class="flex items-center justify-between">
+        <div class="w-1/2 space-y-4">
+            <a class="text-lg font-bold leading-snug tracking-tight" href="{{ route('products') }}">Debel <span class="text-purple-700">Shop</span></a>
+            <p class="text-sm leading-tight tracking-tight text-gray-600">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aspernatur cumque delectus facilis ipsa maxime molestias optio voluptatum. </p>
+        </div>
+        <div class="flex items-center justify-end gap-x-20">
+            <div class="space-y-4">
+                <h3 class="text-lg font-semibold text-gray-800">Decouverte</h3>
+                <ul class="space-y-1">
+                    <li><a href="#" class="text-sm font-medium text-gray-600">Article</a></li>
+                    <li><a href="#" class="text-sm font-medium text-gray-600">Categories</a></li>
+                    <li><a href="#" class="text-sm font-medium text-gray-600">A propos</a></li>
+                </ul>
+            </div>
+            <div class="space-y-4">
+                <h3 class="text-lg font-semibold text-gray-800">Decouverte</h3>
+                <ul class="space-y-1">
+                    <li><a href="#" class="text-sm font-medium text-gray-600">Article</a></li>
+                    <li><a href="#" class="text-sm font-medium text-gray-600">Categories</a></li>
+                    <li><a href="#" class="text-sm font-medium text-gray-600">A propos</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="bg-gray-950 py-1.5">
+        <p class="text-sm text-gray-100 text-center">© {{ now()->format('Y') }} DebelShop. Tous droits réservés.</p>
     </div>
 </footer>
 </body>
