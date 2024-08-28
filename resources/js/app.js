@@ -6,6 +6,4 @@ new Splide('.splide', {
     autoplay: true,
     interval: 5000,
     pauseOnHover: false,
-    arrows: false,
-    pagination: false,
 }).mount();
