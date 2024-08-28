@@ -1,9 +1,7 @@
 <?php
 
 use App\Http\Controllers\FlexPayController;
-use App\Http\Controllers\MaxiCancelPaymentController;
 use App\Http\Controllers\MaxiNotifyPaymentController;
-use App\Http\Controllers\MaxiPaymentAccceptedController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', \App\Livewire\Products::class)->name('products');
@@ -20,4 +18,4 @@ Route::group(['prefix' => 'process'], function () {
 // Pour le compte test, vous pouvez utiliser cette carte test pour tester :
 // - Card number: 4000000000000002
 // - CVV: 123
-// - Expiry Date: 12/2021.
+// - Expiry Date: 12/2025.
