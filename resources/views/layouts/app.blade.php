@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DebelShop Test</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+   
+    <link rel="stylesheet" href="{{asset('css/app.css')}}">
 </head>
 <body class="antialiased bg-gray-50 font-roboto">
 
@@ -65,5 +66,6 @@
         <p class="text-sm text-gray-100 text-center">© {{ now()->format('Y') }} DebelShop. Tous droits réservés.</p>
     </div>
 </footer>
+<script src="{{asset('js/app.js')}}"></script>
 </body>
 </html>
