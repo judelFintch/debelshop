@@ -24,7 +24,7 @@ class FlexPayController extends Controller
 
         $maxicash = new Maxicash(
             credential: new Credential(config('services.maxicash.merchant_id'), config('services.maxicash.merchant_password')),
-            environment: Environment::SANDBOX // use `Environment::LIVE` for live
+            environment: Environment::LIVE // use `Environment::LIVE` for live
         );
 
         $entry = new PaymentEntry(
