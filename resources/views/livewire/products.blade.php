@@ -41,7 +41,13 @@
                                         </svg>
                                     </a>
                                 </div>
+                                
                             </div>
+                            <div class="w-full flex justify-center">
+                            <a wire:navigate href="{{ route('show-product', $product->id) }}" class="bg-white border border-purple-600 shadow px-6 py-2 w-full text-center hover:bg-purple-600 hover:text-white transition-colors duration-300 ease-out text-purple-600 font-semibold rounded-xl">
+                                Payer maintenant
+                            </a>
+                        </div>
                         </div>
                     </div>
                 </div>
