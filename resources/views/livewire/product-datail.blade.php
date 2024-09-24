@@ -30,7 +30,7 @@
                     </li>
                 </ul>
 
-                <form method="post" action="{{ route('payment') }}">
+                <form  action="">
                     @csrf
                     <input type="hidden" readonly name="product" id="product" value="{{ $product->id }}">
                     <button class="bg-purple-600 w-full py-2 rounded-lg text-white font-semibold" type="submit">Confirmer</button>
@@ -55,9 +55,7 @@
                             <span class="font-medium text-lg">$ {{ $product->price }}</span>
                         </div>
                         <div class="w-full flex justify-center">
-                            <a wire:navigate href="{{ route('show-product', $product->id) }}" class="bg-white border border-purple-600 shadow px-6 py-2 w-full text-center hover:bg-purple-600 hover:text-white transition-colors duration-300 ease-out text-purple-600 font-semibold rounded-xl">
-                                Payer maintenant
-                            </a>
+                           
                         </div>
                     </div>
                 </div>
