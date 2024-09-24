@@ -24,7 +24,7 @@ class Products extends Component
             ],
             2 => [
                 'title' => 'Alphard 2002',
-                'price' => 3.000,
+                'price' => 3000,
             ],
         ];
 
