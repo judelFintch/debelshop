@@ -57,10 +57,11 @@
                                 <a wire:navigate href="{{ route('show-product', $product->id) }}" class="text-white font-bold text-lg">{{ $product->title }}</a>
                                 <span class="text-white text-lg font-bold">$ {{ $product->price }}</span>
                                 <!-- Bouton d'ajout au panier et d'aperçu rapide -->
-                                <div class="flex items-center justify-center space-x-4">
-                                    <a href="#" class="bg-white text-purple-600 px-4 py-2 rounded-lg shadow hover:bg-purple-600 hover:text-white transition duration-300">Payer</a>
-                                   
-                                </div>
+                                <div class="w-full flex justify-center">
+                            <a wire:navigate href="{{ route('show-product', $product->id) }}" class="bg-white border border-purple-600 shadow px-6 py-2 w-full text-center hover:bg-purple-600 hover:text-white transition-colors duration-300 ease-out text-purple-600 font-semibold rounded-xl">
+                                Payer maintenant
+                            </a>
+                        </div>
                             </div>
                         </div>
                     </div>
