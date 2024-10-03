@@ -8,7 +8,7 @@
     <!-- Section d'introduction avec une image de fond -->
     <section>
         <div class="relative">
-            <img src="{{ asset('img/Apple-iPhone-15.jpg') }}" class="w-full h-[520px] backdrop-blur-lg brightness-50 object-cover object-top" alt="">
+            <img src="{{ asset('img/4.png') }}" class="w-full h-[520px] backdrop-blur-lg brightness-50 object-cover object-top" alt="">
             <div class="absolute inset-0">
                 <div class="max-w-5xl mx-auto pt-28 space-y-8 px-4">
                     <div class="w-full md:w-1/2 space-y-4">
