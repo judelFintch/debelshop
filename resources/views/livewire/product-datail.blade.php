@@ -1,53 +1,29 @@
 <div>
+<div>
     <section class="mx-auto max-w-5xl px-4">
-        <div class="flex flex-col md:flex-row items-start gap-x-8">
-            <!-- Slider Swiper à gauche -->
-            <div class="w-full md:w-1/2 h-auto">
-                <div class="swiper-container">
-                    <div class="swiper-wrapper">
-                        <!-- Les images du produit -->
-                        <div class="swiper-slide">
-                            <img src="{{ asset('img/' . $product->id . '-1.jpg') }}" class="rounded-lg w-full h-auto object-cover object-center" alt="{{ $product->title }}">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="{{ asset('img/' . $product->id . '-2.jpg') }}" class="rounded-lg w-full h-auto object-cover object-center" alt="{{ $product->title }}">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="{{ asset('img/' . $product->id . '-3.jpg') }}" class="rounded-lg w-full h-auto object-cover object-center" alt="{{ $product->title }}">
-                        </div>
-                    </div>
-
-                    <!-- Pagination (points) -->
-                    <div class="swiper-pagination"></div>
-
-                    <!-- Flèches de navigation -->
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
-                </div>
-            </div>
-
-            <!-- Informations produit à droite -->
-            <div class="w-full md:w-1/2 space-y-6 mt-4 md:mt-0">
-                <h4 class="text-purple-600 font-semibold text-lg">New: Version 2024</h4>
+        <div class="flex flex-col md:flex-row items-center gap-x-8">
+            <img src="{{ asset('img/' . $product->id . '.jpg') }}" class="rounded-lg w-full md:w-[570px] h-auto object-cover object-center" alt="{{ $product->title }}">
+            <div class="space-y-4 mt-4 md:mt-0">
+                <h4 class="text-purple-600 font-semibold">New: Version 2024</h4>
                 <h2 class="text-3xl font-bold uppercase">{{ $product->title }}</h2>
-                <span class="block text-xl font-medium text-green-600">{{ $product->price }} $</span>
+                <span class="block text-lg font-medium">{{ $product->price }} $</span>
 
-                <p class="text-base text-gray-600 leading-tight tracking-wide">{{ $product->description }}</p>
+                <p class="text-sm text-gray-600 leading-tight tracking-tight">{{ $product->description }}</p>
 
-                <ul class="space-y-2">
-                    <li class="flex items-center gap-x-2">
+                <ul class="flex flex-col space-y-1">
+                    <li class="text-sm flex items-center pl-2 gap-x-2">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-purple-600">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                         </svg>
                         <span>Une meilleure qualité prix</span>
                     </li>
-                    <li class="flex items-center gap-x-2">
+                    <li class="text-sm flex items-center pl-2 gap-x-2">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-purple-600">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                         </svg>
                         <span>Une livraison rapide</span>
                     </li>
-                    <li class="flex items-center gap-x-2">
+                    <li class="text-sm flex items-center pl-2 gap-x-2">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-purple-600">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                         </svg>
@@ -58,7 +34,7 @@
                 <form method="post" action="{{ route('payment') }}">
                     @csrf
                     <input type="hidden" readonly name="product" id="product" value="{{ $product->id }}">
-                    <button class="bg-purple-600 w-full py-3 rounded-lg text-white font-semibold transition hover:bg-purple-700 active:bg-purple-800" type="submit">Confirmer</button>
+                    <button class="bg-purple-600 w-full py-2 rounded-lg text-white font-semibold" type="submit">Confirmer</button>
                 </form>
             </div>
         </div>
