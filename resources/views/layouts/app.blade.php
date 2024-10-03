@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DebelShop Test</title>
-   
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.10.2/cdn.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 </head>
 <body class="antialiased bg-gray-50 font-roboto" x-data="{ menuOpen: false }">
 
@@ -113,5 +114,6 @@
 </footer>
 
 <script src="{{ asset('js/app.js') }}"></script>
+
 </body>
 </html>
