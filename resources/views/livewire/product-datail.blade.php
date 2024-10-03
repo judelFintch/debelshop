@@ -30,7 +30,7 @@
                     </li>
                 </ul>
 
-                <form  action="">
+                <form method="post" action="{{ route('payment') }}">
                     @csrf
                     <input type="hidden" readonly name="product" id="product" value="{{ $product->id }}">
                     <button class="bg-purple-600 w-full py-2 rounded-lg text-white font-semibold" type="submit">Confirmer</button>
