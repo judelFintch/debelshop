@@ -31,41 +31,53 @@
             <p class="font-medium text-gray-600 text-lg leading-relaxed mx-auto w-full md:w-[600px]">Découvrez notre sélection de véhicules neufs et d'occasion, ainsi que de pièces détachées, conçues pour répondre à tous vos besoins en matière de transport et d'entretien automobile.</p>
         </div>
 
-        <!-- Produits avec zoom sur image -->
+        <!-- Produits avec une présentation de type Amazon -->
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 pt-16">
             @foreach($products as $product)
-                <div class="relative transform transition-transform hover:scale-105">
-                    <div class="relative overflow-hidden rounded-xl shadow-sm border border-gray-200">
-                        <!-- Image avec zoom au survol -->
-                        <div class="relative overflow-hidden">
-                            <img src="{{ asset('img/' . $product->id . '.jpg') }}" 
-                                 class="h-[400px] w-full object-cover object-center transition-transform duration-500 hover:scale-110" 
-                                 alt="Image du produit {{ $product->title }}">
-                        </div>
+            <div class="relative transform transition-transform hover:scale-105 shadow-lg rounded-lg border border-gray-200 overflow-hidden">
+                <!-- Conteneur avec un ratio 4:3 pour les images -->
+                <div class="relative w-full" style="padding-bottom: 75%;"> <!-- 4:3 aspect ratio -->
+                    <img src="{{ asset('img/' . $product->id . '.jpg') }}"
+                        class="absolute top-0 left-0 w-full h-full object-cover object-center transition-transform duration-500 hover:scale-110"
+                        alt="Image du produit {{ $product->title }}">
+                </div>
 
-                        <!-- Badge de réduction dynamique -->
-                        @if($product->discount)
-                            <span class="absolute top-4 left-4 bg-red-600 px-4 py-2 rounded-lg text-sm text-white font-bold">-{{ $product->discount }}%</span>
+                <!-- Badge de réduction dynamique -->
+                @if($product->discount)
+                <span class="absolute top-4 left-4 bg-red-600 px-4 py-2 rounded-lg text-sm text-white font-bold">-{{ $product->discount }}%</span>
+                @endif
+
+                <!-- Informations du produit toujours visibles -->
+                <div class="p-4 flex flex-col space-y-2">
+                    <!-- Nouveau badge et titre du produit -->
+                    <div class="flex justify-between items-center">
+                        @if($product->isNew)
+                        <span class="bg-purple-600 px-4 py-1 rounded-lg text-sm text-white font-bold">Nouveau</span>
                         @endif
+                        <a wire:navigate href="{{ route('show-product', $product->id) }}" class="text-gray-900 font-bold text-lg">{{ $product->title }}</a>
+                    </div>
 
-                        <!-- Informations du produit toujours visibles -->
-                        <div class="absolute inset-0 p-4 flex flex-col justify-between bg-black/40 space-y-2">
-                            <div>
-                                <span class="bg-purple-600 px-4 py-2 rounded-lg text-sm text-white font-bold">Nouveau</span>
-                            </div>
-                            <div class="space-y-2 text-center">
-                                <a wire:navigate href="{{ route('show-product', $product->id) }}" class="text-white font-bold text-lg">{{ $product->title }}</a>
-                                <span class="text-white text-lg font-bold">$ {{ $product->price }}</span>
-                                <!-- Bouton d'ajout au panier et d'aperçu rapide -->
-                                <div class="w-full flex justify-center">
-                            <a wire:navigate href="{{ route('show-product', $product->id) }}" class="bg-white border border-purple-600 shadow px-6 py-2 w-full text-center hover:bg-purple-600 hover:text-white transition-colors duration-300 ease-out text-purple-600 font-semibold rounded-xl">
-                                Payer maintenant
-                            </a>
-                        </div>
-                            </div>
-                        </div>
+                    <!-- Évaluations du produit -->
+                    <div class="flex items-center space-x-1">
+                        <!-- Exemple de 4 étoiles -->
+                        <span class="text-yellow-500">
+                            ★★★★☆
+                        </span>
+                        <span class="text-gray-500 text-sm">(15 avis)</span>
+                    </div>
+
+                    <!-- Prix -->
+                    <span class="text-gray-900 text-lg font-bold">$ {{ $product->price }}</span>
+
+                    <!-- Bouton d'ajout au panier -->
+                    <div class="w-full">
+                        <a wire:navigate href="{{ route('show-product', $product->id) }}"
+                            class="bg-purple-600 text-white px-6 py-2 w-full text-center hover:bg-purple-700 transition-colors duration-300 ease-out font-semibold rounded-lg">
+                            Payer maintenant
+                        </a>
                     </div>
                 </div>
+            </div>
             @endforeach
         </div>
 
