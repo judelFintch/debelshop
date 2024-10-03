@@ -1,7 +1,7 @@
 <div>
     <section class="mx-auto max-w-5xl px-4">
         <div class="flex flex-col md:flex-row items-center gap-x-8">
-            <img src="{{ asset('img/banner.jpg') }}" class="rounded-lg w-full md:w-[570px] h-auto object-cover object-center" alt="{{ $product->title }}">
+            <img src="{{ asset('img/' . $product->id . '.jpg') }}" class="rounded-lg w-full md:w-[570px] h-auto object-cover object-center" alt="{{ $product->title }}">
             <div class="space-y-4 mt-4 md:mt-0">
                 <h4 class="text-purple-600 font-semibold">New: Version 2024</h4>
                 <h2 class="text-3xl font-bold uppercase">{{ $product->title }}</h2>
@@ -43,7 +43,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 pt-12">
             @foreach($products as $product)
                 <div class="relative">
-                    <img src="{{ asset('img/banner.jpg') }}" class="h-[300px] w-full object-cover object-center rounded-xl shadow-sm border border-gray-200" alt="">
+                    <img src="{{ asset('img/' . $product->id . '.jpg') }}" class="h-[300px] w-full object-cover object-center rounded-xl shadow-sm border border-gray-200" alt="">
                     <a href="#" class="absolute inset-0 flex justify-end px-4 py-4">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-white">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />

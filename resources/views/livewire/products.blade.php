@@ -2,7 +2,7 @@
 <div>
     <!-- Alerte de maintenance -->
     <div class="bg-yellow-500 text-black text-center py-3">
-        <p class="font-medium">🔧 Une maintenance de mise à niveau est en cours sur le site. Merci de votre patience !</p>
+        <p class="font-medium">🔧 Une maintenance et travaux  de mise à niveau est en cours sur le site. Merci de votre patience !</p>
     </div>
 
     <!-- Section d'introduction avec une image de fond -->
