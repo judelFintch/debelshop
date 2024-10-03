@@ -10,13 +10,16 @@
 </head>
 <body class="antialiased bg-gray-50 font-roboto" x-data="{ menuOpen: false }">
 
-
 <header class="mx-auto max-w-5xl px-4 md:px-6">
     <nav class="py-4 md:py-6">
         <div class="flex items-center justify-between border border-gray-200 bg-white px-4 py-3 rounded-xl shadow-sm">
             <a wire:navigate class="text-lg font-bold leading-snug tracking-tight" href="{{ route('products') }}">Debel <span class="text-purple-700">Shop</span></a>
-            
-       
+
+            <!-- Ajout du numéro de téléphone -->
+            <div class="hidden md:block text-gray-600">
+                <span class="text-sm">info :+243 974 762 200</span>
+            </div>
+
             <div class="md:hidden">
                 <button @click="menuOpen = !menuOpen" class="focus:outline-none">
                     <svg x-show="!menuOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -28,7 +31,6 @@
                 </button>
             </div>
 
-          
             <ul class="hidden md:flex items-center gap-x-4">
                 <li><a wire:navigate href="#" class="text-sm font-bold text-purple-600 transition-colors duration-300 border-b-2 border-purple-400">Accueil</a></li>
                 <li><a wire:navigate href="#" class="text-sm font-bold text-gray-600 hover:text-purple-600 transition-colors duration-300 hover:border-b-2 hover:border-purple-400">Articles</a></li>
@@ -36,7 +38,6 @@
                 <li><a wire:navigate href="#" class="text-sm font-bold text-gray-600 hover:text-purple-600 transition-colors duration-300 hover:border-b-2 hover:border-purple-400">Contact</a></li>
             </ul>
 
-        
             <div class="hidden md:flex items-center gap-x-4">
                 <a href="#" wire:navigate>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-gray-600 hover:text-purple-600 transition-colors duration-300 ease-in">
@@ -51,7 +52,6 @@
             </div>
         </div>
 
-     
         <div x-show="menuOpen" class="md:hidden mt-4 space-y-4">
             <ul class="flex flex-col items-center space-y-4">
                 <li><a wire:navigate href="#" class="text-sm font-bold text-purple-600">Accueil</a></li>
@@ -60,7 +60,6 @@
                 <li><a wire:navigate href="#" class="text-sm font-bold text-gray-600 hover:text-purple-600">Contact</a></li>
             </ul>
 
-          
             <div class="flex justify-center gap-x-4 pt-4">
                 <a href="#" wire:navigate>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-gray-600 hover:text-purple-600 transition-colors duration-300 ease-in">
@@ -77,21 +76,17 @@
     </nav>
 </header>
 
-
 <div class="px-4 md:px-0">
     {{ $slot }}
 </div>
 
-
 <footer class="mx-auto max-w-5xl pt-16 pb-6 px-4 md:px-6 space-y-8">
     <div class="flex flex-col md:flex-row items-start justify-between space-y-6 md:space-y-0">
-     
         <div class="md:w-1/2 space-y-4">
             <a wire:navigate class="text-lg font-bold leading-snug tracking-tight" href="{{ route('products') }}">Debel <span class="text-purple-700">Shop</span></a>
-            <p class="text-sm leading-tight tracking-tight text-gray-600">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aspernatur cumque delectus facilis ipsa maxime molestias optio voluptatum.</p>
+            <p class="text-sm leading-tight tracking-tight text-gray-600">Nous nous engageons à vous fournir des véhicules fiables et des pièces automobiles de haute qualité. Chaque produit est soigneusement sélectionné pour garantir votre satisfaction et votre sécurité sur la route.</p>
         </div>
-        
-       
+
         <div class="flex flex-col md:flex-row items-start md:items-end gap-x-10">
             <div class="space-y-4">
                 <h3 class="text-lg font-semibold text-gray-800">Découverte</h3>
@@ -111,13 +106,12 @@
             </div>
         </div>
     </div>
-    
 
     <div class="bg-gray-950 py-2">
         <p class="text-sm text-gray-100 text-center">© {{ now()->format('Y') }} DebelShop. Tous droits réservés.</p>
     </div>
 </footer>
 
-<script src="{{asset('js/app.js')}}"></script>
+<script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>
