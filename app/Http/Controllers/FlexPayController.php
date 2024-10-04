@@ -62,10 +62,9 @@ class FlexPayController extends Controller
             'email' => $validatedData['email'],
             'address' => $validatedData['address'],
             'quantity' => 1,
-            'product_id' => $product->id,
+            'product_description' => $product->id,
             'product_title' => $product->title,
             'product_price' => $product->price,
-            'product_description' => $product->description ?? '',
             'status' => 'pending', // Default to "pending"
             'reference' => $reference,
         ]);
