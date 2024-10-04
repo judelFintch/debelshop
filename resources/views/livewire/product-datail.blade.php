@@ -5,7 +5,7 @@
             <img src="{{ asset('img/' . $product->id . '.jpg') }}" class="rounded-lg w-full md:w-[570px] h-auto object-cover object-center" alt="{{ $product->title }}">
             <div class="space-y-4 mt-4 md:mt-0">
                 <h4 class="text-purple-600 font-semibold">New: Version 2024</h4>
-                <h2 class="text-3xl font-bold uppercase">{{ $product->id }}</h2>
+                <h2 class="text-3xl font-bold uppercase">{{ $product->title }}</h2>
                 <span class="block text-lg font-medium">{{ $product->price }} $</span>
 
                 <p class="text-sm text-gray-600 leading-tight tracking-tight">{{ $product->description }}</p>
