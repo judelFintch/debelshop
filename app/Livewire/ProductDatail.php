@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+
 use App\Models\Product;
 use App\Payments\PaymentGetway;
 use Illuminate\Database\Eloquent\Model;
@@ -17,6 +18,8 @@ use Livewire\Component;
 class ProductDatail extends Component
 {
     public Model $product;
+
+ 
 
     #[Validate([
         'required'
@@ -41,9 +44,14 @@ class ProductDatail extends Component
     public function mount(Product $product): void
     {
         $this->product = $product;
+       
     }
     public function render(): View
     {
+
+
+       
+       
         return view('livewire.product-datail', [
             'products' => Product::paginate(4)
         ]);

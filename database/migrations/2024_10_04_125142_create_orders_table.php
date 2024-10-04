@@ -13,6 +13,16 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->string('name'); 
+            $table->string('email'); 
+            $table->string('address'); 
+            $table->integer('quantity');
+            // Informations du produit
+            $table->string('product_title');
+            $table->decimal('product_price', 8, 2); 
+            $table->text('product_description'); //
+            $table->string('status')->default('pending'); // Statut de la commande (pending, completed, canceled)
+            $table->string('reference')->unique(); // Référence unique pour la commande
             $table->timestamps();
         });
     }

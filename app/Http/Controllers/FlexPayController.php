@@ -3,33 +3,49 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
-use GuzzleHttp\Client;
-use GuzzleHttp\Exception\RequestException;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Str;
+use App\Models\Order;
 use Devscast\Maxicash\Client as Maxicash;
 use Devscast\Maxicash\Credential;
 use Devscast\Maxicash\PaymentEntry;
 use Devscast\Maxicash\Environment;
+use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class FlexPayController extends Controller
 {
+    /**
+     * Handle the incoming payment request.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function __invoke(Request $request)
     {
-
-
-        $product = Product::query()->where('id', $request->input('product_id'))->first();
-       
-        $reference = Str::random(8);
-        $price = intval($product->price * 100);
         
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'address' => 'required|string|max:255',
+        ]);
 
+       
+        $product = Product::findOrFail($request->input('product_id'));
+
+        $reference = Str::random(8);
+
+       
+        $price = intval($product->price * 100);
+
+       
         $maxicash = new Maxicash(
-            credential: new Credential(config('services.maxicash.merchant_id'), config('services.maxicash.merchant_password')),
-            environment: Environment::LIVE // use `Environment::LIVE` for live
+            credential: new Credential(
+                config('services.maxicash.merchant_id'),
+                config('services.maxicash.merchant_password')
+            ),
+            environment: Environment::LIVE // Use LIVE environment for production
         );
 
+        
         $entry = new PaymentEntry(
             credential: $maxicash->credential,
             amount: $price,
@@ -40,8 +56,23 @@ class FlexPayController extends Controller
             notifyUrl: route('notification')
         );
 
-        $url = $maxicash->queryStringURLPayment($entry);
+      
+        Order::create([
+            'name' => $validatedData['name'],
+            'email' => $validatedData['email'],
+            'address' => $validatedData['address'],
+            'quantity' => 1,
+            'product_id' => $product->id,
+            'product_title' => $product->title,
+            'product_price' => $product->price,
+            'product_description' => $product->description ?? '',
+            'status' => 'pending', // Default to "pending"
+            'reference' => $reference,
+        ]);
 
-       return redirect()->to($url);
+       
+        $paymentUrl = $maxicash->queryStringURLPayment($entry);
+
+        return redirect()->to($paymentUrl);
     }
 }
