@@ -67,16 +67,11 @@
             @csrf
             <!-- Informations de l'article -->
             <input type="hidden" name="product_id" value="{{ $product->id }}">
-            <input type="hidden" name="product_title" value="{{ $product->title }}">
-            <input type="hidden" name="product_price" value="{{ $product->price }}">
-            <input type="hidden" name="product_description" value="{{ $product->description }}">
-
             <!-- Champ Nom -->
             <div class="mb-4">
                 <label for="name" class="block text-sm font-medium text-gray-700">Nom complet</label>
                 <input type="text" id="name" name="name" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg" required>
             </div>
-
             <!-- Champ Email -->
             <div class="mb-4">
                 <label for="email" class="block text-sm font-medium text-gray-700">Email</label>

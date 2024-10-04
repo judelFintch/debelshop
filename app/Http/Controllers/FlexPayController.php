@@ -23,6 +23,9 @@ class FlexPayController extends Controller
         $product = Product::query()->where('id', $request->input('product_id'))->first();
         $reference = Str::random(8);
         $price = intval($product->price * 100);
+        dd($price);
+
+        
         $maxicash = new Maxicash(
             credential: new Credential(config('services.maxicash.merchant_id'), config('services.maxicash.merchant_password')),
             environment: Environment::LIVE // use `Environment::LIVE` for live
