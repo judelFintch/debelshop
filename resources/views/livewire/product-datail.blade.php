@@ -1,11 +1,11 @@
 <div>
-<div>
+    <!-- Section principale du produit -->
     <section class="mx-auto max-w-5xl px-4">
         <div class="flex flex-col md:flex-row items-center gap-x-8">
             <img src="{{ asset('img/' . $product->id . '.jpg') }}" class="rounded-lg w-full md:w-[570px] h-auto object-cover object-center" alt="{{ $product->title }}">
             <div class="space-y-4 mt-4 md:mt-0">
                 <h4 class="text-purple-600 font-semibold">New: Version 2024</h4>
-                <h2 class="text-3xl font-bold uppercase">{{ $product->title }}</h2>
+                <h2 class="text-3xl font-bold uppercase">{{ $product->id }}</h2>
                 <span class="block text-lg font-medium">{{ $product->price }} $</span>
 
                 <p class="text-sm text-gray-600 leading-tight tracking-tight">{{ $product->description }}</p>
@@ -30,13 +30,12 @@
                         <span>Paiement par monnaie électronique</span>
                     </li>
                 </ul>
-                <button id="openModal" class="bg-purple-600 w-full py-2 rounded-lg text-white font-semibold">Payer maintenant</button>
-
-               
+                <button data-product-id="{{ $product->id }}" class="bg-purple-600 w-full py-2 rounded-lg text-white font-semibold openModal">Payer maintenant</button>
             </div>
         </div>
     </section>
 
+    <!-- Section des produits similaires -->
     <section class="mx-auto max-w-5xl relative pt-28 px-4">
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 pt-12">
             @foreach($products as $product)
@@ -56,60 +55,63 @@
         </div>
     </section>
 
+    <!-- Modal pour le paiement (par défaut masqué) -->
+    <div id="paymentModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
+        <div class="bg-white w-full max-w-lg p-8 rounded-lg shadow-lg">
+            <h2 class="text-2xl font-bold mb-4">Informations de paiement</h2>
+            <form id="paymentForm" method="post" action="{{ route('payment') }}">
+                @csrf
+                <!-- Champ caché pour l'ID du produit -->
+                <input type="hidden" name="product_id">
 
-    
+                <!-- Champ Nom -->
+                <div class="mb-4">
+                    <label for="name" class="block text-sm font-medium text-gray-700">Nom complet</label>
+                    <input type="text" id="name" name="name" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg" required>
+                </div>
 
-<!-- Modal (par défaut masqué) -->
-<div id="paymentModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
-    <div class="bg-white w-full max-w-lg p-8 rounded-lg shadow-lg">
-        <h2 class="text-2xl font-bold mb-4">Informations de paiement</h2>
-        <form id="paymentForm" method="post" action="{{ route('payment') }}">
-            @csrf
-            <!-- Informations de l'article -->
-            <input type="hidden" name="product_id" value="{{ $product->id }}">
-            <!-- Champ Nom -->
-            <div class="mb-4">
-                <label for="name" class="block text-sm font-medium text-gray-700">Nom complet</label>
-                <input type="text" id="name" name="name" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg" required>
-            </div>
-            <!-- Champ Email -->
-            <div class="mb-4">
-                <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-                <input type="email" id="email" name="email" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg" required>
-            </div>
+                <!-- Champ Email -->
+                <div class="mb-4">
+                    <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                    <input type="email" id="email" name="email" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg" required>
+                </div>
 
-            <!-- Champ Adresse -->
-            <div class="mb-4">
-                <label for="address" class="block text-sm font-medium text-gray-700">Adresse</label>
-                <input type="text" id="address" name="address" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg" required>
-            </div>
+                <!-- Champ Adresse -->
+                <div class="mb-4">
+                    <label for="address" class="block text-sm font-medium text-gray-700">Adresse</label>
+                    <input type="text" id="address" name="address" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg" required>
+                </div>
 
-           
-
-            <!-- Boutons -->
-            <div class="flex justify-end space-x-4">
-                <button type="button" id="closeModal" class="bg-gray-600 text-white px-4 py-2 rounded-lg">Annuler</button>
-                <button type="submit" class="bg-purple-600 text-white px-4 py-2 rounded-lg">Confirmer et Payer</button>
-            </div>
-        </form>
+                <!-- Boutons -->
+                <div class="flex justify-end space-x-4">
+                    <button type="button" id="closeModal" class="bg-gray-600 text-white px-4 py-2 rounded-lg">Annuler</button>
+                    <button type="submit" class="bg-purple-600 text-white px-4 py-2 rounded-lg">Confirmer et Payer</button>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
 
+    <!-- Inclusion de Swiper -->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
+    <!-- Gestion du modal -->
     <script>
-    // Ouvre le modal
-    document.getElementById('openModal').addEventListener('click', function () {
-        document.getElementById('paymentModal').classList.remove('hidden');
-    });
+        // Ouvre le modal et passe l'ID du produit
+        document.querySelectorAll('.openModal').forEach(button => {
+            button.addEventListener('click', function () {
+                const productId = this.getAttribute('data-product-id');
+                document.querySelector('input[name="product_id"]').value = productId;
+                document.getElementById('paymentModal').classList.remove('hidden');
+            });
+        });
 
-    // Ferme le modal
-    document.getElementById('closeModal').addEventListener('click', function () {
-        document.getElementById('paymentModal').classList.add('hidden');
-    });
-</script>
+        // Ferme le modal
+        document.getElementById('closeModal').addEventListener('click', function () {
+            document.getElementById('paymentModal').classList.add('hidden');
+        });
+    </script>
 
-
+    <!-- Initialisation de Swiper -->
     <script>
         var swiper = new Swiper('.swiper-container', {
             loop: true,  // Boucle infinie
@@ -121,7 +123,7 @@
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',
             },
-            effect: 'slide',  // Vous pouvez aussi essayer 'fade' pour une autre transition
+            effect: 'slide',  // Transition par glissement
             zoom: true,  // Activer le zoom
         });
     </script>
