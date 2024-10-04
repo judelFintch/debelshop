@@ -17,11 +17,12 @@ class FlexPayController extends Controller
 {
     public function __invoke(Request $request)
     {
-        $product = Product::query()->where('id', $request->input('product'))->first();
+
+
+      
+        $product = Product::query()->where('id', $request->input('product_id'))->first();
         $reference = Str::random(8);
-
         $price = intval($product->price * 100);
-
         $maxicash = new Maxicash(
             credential: new Credential(config('services.maxicash.merchant_id'), config('services.maxicash.merchant_password')),
             environment: Environment::LIVE // use `Environment::LIVE` for live
@@ -39,6 +40,6 @@ class FlexPayController extends Controller
 
         $url = $maxicash->queryStringURLPayment($entry);
 
-        return redirect()->to($url);
+        //return redirect()->to($url);
     }
 }

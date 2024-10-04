@@ -30,12 +30,9 @@
                         <span>Paiement par monnaie électronique</span>
                     </li>
                 </ul>
+                <button id="openModal" class="bg-purple-600 w-full py-2 rounded-lg text-white font-semibold">Payer maintenant</button>
 
-                <form method="post" action="{{ route('payment') }}">
-                    @csrf
-                    <input type="hidden" readonly name="product" id="product" value="{{ $product->id }}">
-                    <button class="bg-purple-600 w-full py-2 rounded-lg text-white font-semibold" type="submit">Confirmer</button>
-                </form>
+               
             </div>
         </div>
     </section>
@@ -59,7 +56,64 @@
         </div>
     </section>
 
+
+    
+
+<!-- Modal (par défaut masqué) -->
+<div id="paymentModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
+    <div class="bg-white w-full max-w-lg p-8 rounded-lg shadow-lg">
+        <h2 class="text-2xl font-bold mb-4">Informations de paiement</h2>
+        <form id="paymentForm" method="post" action="{{ route('payment') }}">
+            @csrf
+            <!-- Informations de l'article -->
+            <input type="hidden" name="product_id" value="{{ $product->id }}">
+            <input type="hidden" name="product_title" value="{{ $product->title }}">
+            <input type="hidden" name="product_price" value="{{ $product->price }}">
+            <input type="hidden" name="product_description" value="{{ $product->description }}">
+
+            <!-- Champ Nom -->
+            <div class="mb-4">
+                <label for="name" class="block text-sm font-medium text-gray-700">Nom complet</label>
+                <input type="text" id="name" name="name" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg" required>
+            </div>
+
+            <!-- Champ Email -->
+            <div class="mb-4">
+                <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                <input type="email" id="email" name="email" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg" required>
+            </div>
+
+            <!-- Champ Adresse -->
+            <div class="mb-4">
+                <label for="address" class="block text-sm font-medium text-gray-700">Adresse</label>
+                <input type="text" id="address" name="address" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg" required>
+            </div>
+
+           
+
+            <!-- Boutons -->
+            <div class="flex justify-end space-x-4">
+                <button type="button" id="closeModal" class="bg-gray-600 text-white px-4 py-2 rounded-lg">Annuler</button>
+                <button type="submit" class="bg-purple-600 text-white px-4 py-2 rounded-lg">Confirmer et Payer</button>
+            </div>
+        </form>
+    </div>
+</div>
+
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <script>
+    // Ouvre le modal
+    document.getElementById('openModal').addEventListener('click', function () {
+        document.getElementById('paymentModal').classList.remove('hidden');
+    });
+
+    // Ferme le modal
+    document.getElementById('closeModal').addEventListener('click', function () {
+        document.getElementById('paymentModal').classList.add('hidden');
+    });
+</script>
+
 
     <script>
         var swiper = new Swiper('.swiper-container', {
