@@ -44,7 +44,7 @@ class Products extends Component
         ],
         4 => [
             'title' => 'Moteur Alphard',
-            'price' => 3000,
+            'price' => 2000,
             'description' => 'Ce moteur Alphard est fiable et puissant, offrant une excellente performance et une durabilité exceptionnelle pour votre véhicule.'
         ],
         5 => [
