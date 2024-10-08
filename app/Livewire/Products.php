@@ -57,6 +57,25 @@ class Products extends Component
             'price' => 200,
             'description' => 'Batterie grand format avec une capacité élevée pour garantir une longue durée de vie et des performances stables dans tous les environnements.'
         ],
+
+        7 => [
+            'title' => 'Vilebrequin',
+            'price' => 500,
+            'description' => 'Vilebrequin pour moteur, essentiel pour la conversion du mouvement linéaire des pistons en mouvement rotatif.'
+        ],
+        
+        8 => [
+            'title' => 'Transmission Alphard',
+            'price' => 400,
+            'description' => 'Système de transmission pour véhicule Toyota Alphard, permettant de transférer la puissance du moteur aux roues.'
+        ],
+        
+        9 => [
+            'title' => 'Boite de vitesse',
+            'price' => 1000,
+            'description' => 'Boite de vitesse manuelle, assurant le contrôle du régime moteur et la transmission de puissance à différents rapports.'
+        ],
+        
     ];
 
     foreach ($updates as $id => $data) {
