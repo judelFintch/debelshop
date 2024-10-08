@@ -54,17 +54,17 @@
             <div class="w-full md:w-1/3 space-y-6">
                 <div class="space-y-2">
                     <h4 class="text-lg font-bold text-gray-900">Adresse</h4>
-                    <p class="text-gray-600">123 Rue des Automobiles, Ville XYZ, Pays</p>
+                    <p class="text-gray-600"></p>
                 </div>
 
                 <div class="space-y-2">
                     <h4 class="text-lg font-bold text-gray-900">Téléphone</h4>
-                    <p class="text-gray-600">+123 456 7890</p>
+                    <p class="text-gray-600">+243 974 762 200</p>
                 </div>
 
                 <div class="space-y-2">
                     <h4 class="text-lg font-bold text-gray-900">E-mail</h4>
-                    <p class="text-gray-600">support@votreentreprise.com</p>
+                    <p class="text-gray-600">support@debelshop.com</p>
                 </div>
             </div>
         </div>
