@@ -36,7 +36,7 @@
                 <li><a wire:navigate href="{{route('products')}}" class="text-sm font-bold text-purple-600 transition-colors duration-300 border-b-2 border-purple-400">Accueil</a></li>
                 <li><a wire:navigate href="#" class="text-sm font-bold text-gray-600 hover:text-purple-600 transition-colors duration-300 hover:border-b-2 hover:border-purple-400">Articles</a></li>
                 <li><a wire:navigate href="#" class="text-sm font-bold text-gray-600 hover:text-purple-600 transition-colors duration-300 hover:border-b-2 hover:border-purple-400">A propos</a></li>
-                <li><a wire:navigate href="#" class="text-sm font-bold text-gray-600 hover:text-purple-600 transition-colors duration-300 hover:border-b-2 hover:border-purple-400">Contact</a></li>
+                <li><a wire:navigate href="{{route('contact')}}" class="text-sm font-bold text-gray-600 hover:text-purple-600 transition-colors duration-300 hover:border-b-2 hover:border-purple-400">Contact</a></li>
             </ul>
 
             <div class="hidden md:flex items-center gap-x-4">
