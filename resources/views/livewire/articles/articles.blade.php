@@ -6,19 +6,7 @@
     </div>
 
     
-    <section>
-        <div class="relative">
-            <img src="{{ asset('img/4.png') }}" class="w-full h-[520px] brightness-50 object-cover object-top" alt="Présentation des articles">
-            <div class="absolute inset-0">
-                <div class="max-w-5xl mx-auto pt-28 space-y-8 px-4">
-                    <div class="w-full md:w-1/2 space-y-4">
-                        <h2 class="text-6xl font-bold tracking-tight text-white leading-tight">Nos Articles</h2>
-                        <p class="text-gray-100 font-medium leading-relaxed text-base">Explorez notre sélection complète de véhicules neufs, d'occasion, et de pièces de rechange pour tous vos besoins automobiles.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    
 
     
     <section class="mx-auto max-w-5xl relative pt-16 px-4">
