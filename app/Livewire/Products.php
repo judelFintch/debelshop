@@ -91,7 +91,7 @@ class Products extends Component
                 'title' => $data['title'],
                 'price' => $data['price'],
                 'description' => $data['description'],
-                'image' => $id . '.jpg', // Assigne l'ID comme nom d'image
+                'image' => $id . '.jpg',
             ]);
         }
     }
