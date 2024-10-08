@@ -5,6 +5,7 @@ use App\Http\Controllers\MaxiNotifyPaymentController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', \App\Livewire\Products::class)->name('products');
+Route::get('/contact', \App\Livewire\Products::class)->name('contact');
 Route::get('/{product}', \App\Livewire\ProductDatail::class)->name('show-product');
 
 Route::group(['prefix' => 'process'], function () {
