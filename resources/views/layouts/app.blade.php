@@ -81,18 +81,22 @@
     {{ $slot }}
 </div>
 
-<footer class="mx-auto max-w-5xl pt-16 pb-6 px-4 md:px-6 space-y-8">
-    <div class="flex flex-col md:flex-row items-start justify-between space-y-6 md:space-y-0">
+<footer class="w-full bg-gray-100 py-8 px-4 mt-8">
+    <div class="container mx-auto flex flex-col md:flex-row justify-between space-y-8 md:space-y-0 md:space-x-10">
         <div class="md:w-1/2 space-y-4">
-            <a wire:navigate class="text-lg font-bold leading-snug tracking-tight" href="{{ route('products') }}">Debel <span class="text-purple-700">Shop</span></a>
-            <p class="text-sm leading-tight tracking-tight text-gray-600">Nous nous engageons à vous fournir des véhicules fiables et des pièces automobiles de haute qualité. Chaque produit est soigneusement sélectionné pour garantir votre satisfaction et votre sécurité sur la route.</p>
+            <a wire:navigate class="text-2xl font-bold leading-snug tracking-tight" href="{{ route('products') }}">
+                Debel <span class="text-purple-700">Shop</span>
+            </a>
+            <p class="text-sm leading-tight tracking-tight text-gray-600">
+                Nous nous engageons à vous fournir des véhicules fiables et des pièces automobiles de haute qualité. Chaque produit est soigneusement sélectionné pour garantir votre satisfaction et votre sécurité sur la route.
+            </p>
         </div>
 
-        <div class="flex flex-col md:flex-row items-start md:items-end gap-x-10">
+        <div class="flex flex-col md:flex-row md:space-x-10 space-y-6 md:space-y-0">
             <div class="space-y-4">
                 <h3 class="text-lg font-semibold text-gray-800">Découverte</h3>
                 <ul class="space-y-1">
-                    <li><a href="#" class="text-sm font-medium text-gray-600">Article</a></li>
+                    <li><a href="#" class="text-sm font-medium text-gray-600">Articles</a></li>
                     <li><a href="#" class="text-sm font-medium text-gray-600">Catégories</a></li>
                     <li><a href="#" class="text-sm font-medium text-gray-600">À propos</a></li>
                 </ul>
@@ -108,10 +112,14 @@
         </div>
     </div>
 
-    <div class="bg-gray-950 py-2">
-        <p class="text-sm text-gray-100 text-center">© {{ now()->format('Y') }} DebelShop. Tous droits réservés.</p>
+    <div class="bg-gray-950 py-4 mt-8">
+        <p class="text-sm text-gray-100 text-center">
+            © {{ now()->format('Y') }} DebelShop. Tous droits réservés.
+        </p>
     </div>
 </footer>
+
+
 
 <script src="{{ asset('js/app.js') }}"></script>
 
