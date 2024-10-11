@@ -1,7 +1,7 @@
 <div>
     <!-- Notification de maintenance -->
     <div class="bg-yellow-500 text-black text-center py-3 shadow-lg relative">
-        <p class="font-medium">🔧 Une maintenance et des travaux de mise à niveau sont en cours sur le site. Merci de votre patience !</p>
+        <p class="font-medium">🔧 Une maintenance et des travaux de mise à niveau sont en cours sur le site.</p>
         <button class="absolute top-2 right-4 text-black" onclick="this.parentElement.style.display='none'">✖</button>
     </div>
 
@@ -83,7 +83,7 @@
 
         <!-- Bouton Voir Tous les Produits -->
         <div class="pt-16 text-center">
-            <a href="#" class="flex items-center justify-center gap-x-2">
+            <a href="{{route('articles')}}" class="flex items-center justify-center gap-x-2">
                 <span class="text-sm font-medium text-gray-600">Voir Tous les Produits</span>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-gray-600">
                     <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
