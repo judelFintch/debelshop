@@ -16,7 +16,7 @@
         <div class="flex items-center justify-between border border-gray-200 bg-white px-4 py-3 rounded-xl shadow-sm">
             <a wire:navigate class="text-lg font-bold leading-snug tracking-tight" href="{{ route('products') }}">Debel <span class="text-purple-700">Shop</span></a>
 
-            <!-- Ajout du numéro de téléphone -->
+           
             <div class="hidden md:block text-gray-600">
                 <span class="text-sm">info :+243 974 762 200</span>
             </div>

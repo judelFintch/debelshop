@@ -88,8 +88,8 @@
                         <div class="flex items-center justify-between">
                             <div class="flex items-center border border-gray-300 rounded-lg overflow-hidden">
                                 <button class="px-3 py-1 bg-gray-200 hover:bg-gray-300" onclick="decrementQuantity({{ $product->id }})">-</button>
-                                <input type="number" id="quantity-{{ $product->id }}" value="1" min="1" class="w-12 text-center border-none" />
-                                <button class="px-3 py-1 bg-gray-200 hover:bg-gray-300" onclick="incrementQuantity({{ $product->id }})">+</button>
+                                <input disabled type="number" id="quantity-{{ $product->id }}" value="1" min="1"  max="1" class="w-12 text-center border-none" />
+                                <button class="px-3 py-1 bg-gray-200 hover:bg-gray-300" onclic="incrementQuantity({{ $product->id }})">+</button>
                             </div>
                             <div class="flex space-x-2">
                                 <button class="bg-purple-600 text-white px-4 py-2 ml-4 hover:bg-purple-700 transition-colors duration-300 ease-out font-semibold rounded-lg" onclick="addToCart({{ $product->id }})">
