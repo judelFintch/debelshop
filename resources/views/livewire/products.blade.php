@@ -1,4 +1,17 @@
 <div>
+
+<style>
+    #cart-items img {
+        width: 50px; /* Taille de l'image */
+        height: 50px; /* Taille de l'image */
+        object-fit: cover; /* Pour garder le ratio */
+        margin-right: 10px; /* Espace entre l'image et le texte */
+    }
+    .cart-item {
+        display: flex; /* Aligner l'image et le texte sur une ligne */
+        align-items: center; /* Centrer verticalement */
+    }
+</style>
     <!-- Notification de maintenance -->
     <div class="bg-yellow-500 text-black text-center py-3 shadow-lg relative" role="alert">
         <p class="font-medium">🔧 Une maintenance et des travaux de mise à niveau sont en cours sur le site.</p>
@@ -155,22 +168,7 @@
         </div>
     </section>
 
-    <!-- Panier -->
-    <div id="cart" class="fixed top-16 right-4 w-96 bg-white shadow-lg rounded-lg p-6 hidden">
-        <h2 class="text-xl font-bold mb-4">Votre Panier</h2>
-        <div id="cart-items" class="space-y-4"></div>
-        <div class="flex justify-between mt-4">
-            <span class="font-bold">Total :</span>
-            <span id="cart-total" class="font-bold">$0.00</span>
-        </div>
-        <button class="mt-4 bg-purple-600 text-white px-4 py-2 rounded-lg w-full" onclick="checkout()">Passer à la Caisse</button>
-    </div>
-
-    <!-- Bouton Panier -->
-    <button class="fixed bottom-4 right-4 bg-purple-600 text-white p-4 rounded-full" onclick="toggleCart()">
-        🛒
-    </button>
-</div>
+   <x-cart></x-cart>
 
 <script>
     function incrementQuantity(productId) {
@@ -191,4 +189,4 @@
     }
 </script>
 
-<script src="{{ asset('js/main.js') }}"></script>
+

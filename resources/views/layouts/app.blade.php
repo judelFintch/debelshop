@@ -7,9 +7,21 @@
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.10.2/cdn.min.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="{{asset('css/style.css')}}" />
+
+    
 </head>
 <body class="antialiased bg-gray-50 font-roboto" x-data="{ menuOpen: false }">
+<style>
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
+        }
+    </style>
 
 <header class="mx-auto max-w-5xl px-4 md:px-6">
     <nav class="py-4 md:py-6">
@@ -120,6 +132,8 @@
 </footer>
 
 <script src="{{ asset('js/app.js') }}"></script>
+<script src="{{ asset('js/main.js') }}"></script>
+<script src="{{ asset('js/cart.js') }}"></script>
 
 </body>
 </html>

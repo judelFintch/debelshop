@@ -32,3 +32,5 @@ function previousSlide() {
 
 showCarouselItem(currentIndex);
 setInterval(nextSlide, 5000);
+
+
