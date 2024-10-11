@@ -33,9 +33,9 @@
             </div>
 
             <ul class="hidden md:flex items-center gap-x-4">
-                <li><a  href="{{route('products')}}" class="text-sm font-bold text-purple-600 transition-colors duration-300 border-b-2 border-purple-400">Accueil</a></li>
-                <li><a wire:navigate href="{{route('articles')}}" class="text-sm font-bold text-gray-600 hover:text-purple-600 transition-colors duration-300 hover:border-b-2 hover:border-purple-400">Articles</a></li>
-                <li><a wire:navigate href="{{route('about')}}" class="text-sm font-bold text-gray-600 hover:text-purple-600 transition-colors duration-300 hover:border-b-2 hover:border-purple-400">A propos</a></li>
+                <li><a wire:navigate href="{{route('products')}}" class="text-sm font-bold text-purple-600 transition-colors duration-300 border-b-2 border-purple-400">Accueil</a></li>
+                <li><a wire:navigate href="#" class="text-sm font-bold text-gray-600 hover:text-purple-600 transition-colors duration-300 hover:border-b-2 hover:border-purple-400">Articles</a></li>
+                <li><a wire:navigate href="#" class="text-sm font-bold text-gray-600 hover:text-purple-600 transition-colors duration-300 hover:border-b-2 hover:border-purple-400">A propos</a></li>
                 <li><a wire:navigate href="{{route('contact')}}" class="text-sm font-bold text-gray-600 hover:text-purple-600 transition-colors duration-300 hover:border-b-2 hover:border-purple-400">Contact</a></li>
             </ul>
 
@@ -55,7 +55,7 @@
 
         <div x-show="menuOpen" class="md:hidden mt-4 space-y-4">
             <ul class="flex flex-col items-center space-y-4">
-                <li><a wire:navigate href="{{route('products')}}" class="text-sm font-bold text-purple-600">Accueil</a></li>
+                <li><a wire:navigate href="#" class="text-sm font-bold text-purple-600">Accueil</a></li>
                 <li><a wire:navigate href="#" class="text-sm font-bold text-gray-600 hover:text-purple-600">Articles</a></li>
                 <li><a wire:navigate href="#" class="text-sm font-bold text-gray-600 hover:text-purple-600">A propos</a></li>
                 <li><a wire:navigate href="#" class="text-sm font-bold text-gray-600 hover:text-purple-600">Contact</a></li>
@@ -81,24 +81,20 @@
     {{ $slot }}
 </div>
 
-<footer class="w-full bg-gray-100 py-8 px-4 mt-8">
-    <div class="container mx-auto flex flex-col md:flex-row justify-between space-y-8 md:space-y-0 md:space-x-10">
+<footer class="mx-auto max-w-5xl pt-16 pb-6 px-4 md:px-6 space-y-8">
+    <div class="flex flex-col md:flex-row items-start justify-between space-y-6 md:space-y-0">
         <div class="md:w-1/2 space-y-4">
-            <a wire:navigate class="text-2xl font-bold leading-snug tracking-tight" href="{{ route('products') }}">
-                Debel <span class="text-purple-700">Shop</span>
-            </a>
-            <p class="text-sm leading-tight tracking-tight text-gray-600">
-                Nous nous engageons à vous fournir des véhicules fiables et des pièces automobiles de haute qualité. Chaque produit est soigneusement sélectionné pour garantir votre satisfaction et votre sécurité sur la route.
-            </p>
+            <a wire:navigate class="text-lg font-bold leading-snug tracking-tight" href="{{ route('products') }}">Debel <span class="text-purple-700">Shop</span></a>
+            <p class="text-sm leading-tight tracking-tight text-gray-600">Nous nous engageons à vous fournir des véhicules fiables et des pièces automobiles de haute qualité. Chaque produit est soigneusement sélectionné pour garantir votre satisfaction et votre sécurité sur la route.</p>
         </div>
 
-        <div class="flex flex-col md:flex-row md:space-x-10 space-y-6 md:space-y-0">
+        <div class="flex flex-col md:flex-row items-start md:items-end gap-x-10">
             <div class="space-y-4">
                 <h3 class="text-lg font-semibold text-gray-800">Découverte</h3>
                 <ul class="space-y-1">
-                    <li><a href="{{route('articles')}}" class="text-sm font-medium text-gray-600">Articles</a></li>
+                    <li><a href="#" class="text-sm font-medium text-gray-600">Article</a></li>
                     <li><a href="#" class="text-sm font-medium text-gray-600">Catégories</a></li>
-                    <li><a href="{{route('about')}}" class="text-sm font-medium text-gray-600">À propos</a></li>
+                    <li><a href="#" class="text-sm font-medium text-gray-600">À propos</a></li>
                 </ul>
             </div>
             <div class="space-y-4">
@@ -112,10 +108,8 @@
         </div>
     </div>
 
-    <div class="bg-gray-950 py-4 mt-8">
-        <p class="text-sm text-gray-100 text-center">
-            © {{ now()->format('Y') }} DebelShop. Tous droits réservés.
-        </p>
+    <div class="bg-gray-950 py-2">
+        <p class="text-sm text-gray-100 text-center">© {{ now()->format('Y') }} DebelShop. Tous droits réservés.</p>
     </div>
 </footer>
 

@@ -1,17 +1,17 @@
 <div>
     <!-- Notification de maintenance -->
-    <div class="bg-yellow-500 text-black text-center py-3 shadow-lg relative">
+    <div class="bg-yellow-500 text-black text-center py-3 shadow-lg relative" role="alert">
         <p class="font-medium">🔧 Une maintenance et des travaux de mise à niveau sont en cours sur le site.</p>
-        <button class="absolute top-2 right-4 text-black" onclick="this.parentElement.style.display='none'">✖</button>
+        <button class="absolute top-2 right-4 text-black" aria-label="Fermer la notification" onclick="this.parentElement.style.display='none'">✖</button>
     </div>
 
     <!-- Carrousel d'images -->
-    <section class="relative w-full overflow-hidden">
+    <section class="relative w-full overflow-hidden" aria-label="Carrousel d'images">
         <div class="carousel-wrapper flex transition-transform duration-700">
-            <div class="carousel-item w-full">
+            <div class="carousel-item w-full" aria-hidden="false">
                 <img src="{{ asset('img/4.png') }}" class="w-full h-[520px] brightness-50 object-cover object-top" alt="Image 1">
             </div>
-            <div class="carousel-item w-full">
+            <div class="carousel-item w-full" aria-hidden="true">
                 <img src="{{ asset('img/bg-1.jpg') }}" class="w-full h-[520px] brightness-50 object-cover object-top" alt="Image 2">
             </div>
         </div>
@@ -19,22 +19,20 @@
             <div class="max-w-7xl mx-auto pt-28 space-y-8 px-6">
                 <div class="w-full md:w-2/3 space-y-4">
                     <h2 class="text-6xl font-bold tracking-tight text-white leading-tight">La qualité est notre priorité</h2>
-                    <p class="text-gray-100 font-medium leading-relaxed text-lg">Nous nous engageons à vous fournir des véhicules fiables et des pièces automobiles de haute qualité. Chaque produit est soigneusement sélectionné pour garantir votre satisfaction et votre sécurité sur la route.</p>
+                    <p class="text-gray-100 font-medium leading-relaxed text-lg">Nous nous engageons à vous fournir des véhicules fiables et des pièces automobiles de haute qualité.</p>
                 </div>
                 <div class="flex items-center gap-x-6">
-                    <a href="#" class="hover-btn bg-purple-600 text-white px-8 py-3 rounded-lg shadow">Découvrir</a>
-                    <a href="#" class="hover-btn text-gray-950 bg-slate-100 px-8 py-3 rounded-lg shadow border border-gray-200">Voir les offres</a>
+                    <a href="#" class="hover-btn bg-purple-600 text-white px-8 py-3 rounded-lg shadow transition duration-200 ease-in-out transform hover:scale-105">Découvrir</a>
+                    <a href="#" class="hover-btn text-gray-950 bg-slate-100 px-8 py-3 rounded-lg shadow border border-gray-200 transition duration-200 ease-in-out transform hover:scale-105">Voir les offres</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Section Nos Meilleurs Produits -->
-    <section class="max-w-7xl mx-auto pt-28 px-6">
-        <div class="text-center space-y-6">
-            <h3 class="text-4xl font-extrabold leading-tight tracking-tight">Nos Meilleurs Produits</h3>
-            <p class="font-medium text-gray-600 text-lg leading-relaxed mx-auto w-full md:w-[600px]">Découvrez notre sélection de véhicules neufs et d'occasion, ainsi que de pièces détachées, conçues pour répondre à tous vos besoins en matière de transport et d'entretien automobile.</p>
-        </div>
+    <section class="max-w-7xl mx-auto pt-28 px-6" aria-labelledby="best-products">
+        <h3 id="best-products" class="text-4xl font-extrabold leading-tight tracking-tight text-center">Nos Meilleurs Produits</h3>
+        <p class="font-medium text-gray-600 text-lg leading-relaxed text-center mx-auto w-full md:w-[600px]">Découvrez notre sélection de véhicules et pièces détachées.</p>
 
         <!-- Barre de filtre par catégories -->
         <div class="flex justify-center space-x-4 my-8">
@@ -44,42 +42,66 @@
             <button class="filter-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-lg hover:bg-purple-600 hover:text-white transition-all" onclick="filterCategory('pieces')">Pièces Détachées</button>
         </div>
 
-        <!-- Produits avec filtre -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 pt-12">
-            @foreach($products as $product)
-            <div class="relative transform transition-transform hover:scale-105 shadow-lg rounded-lg border border-gray-200 overflow-hidden product-item" data-category="{{ $product->category }}">
-                <div class="relative w-full" style="padding-bottom: 75%;">
-                    <img src="{{ asset('img/' . $product->id . '.jpg') }}" class="absolute top-0 left-0 w-full h-full object-cover object-center transition-transform duration-500 hover:scale-110" alt="Image du produit {{ $product->title }}">
-                </div>
-
-                @if($product->discount)
-                <span class="absolute top-4 left-4 bg-red-600 px-4 py-2 rounded-lg text-sm text-white font-bold">-{{ $product->discount }}%</span>
-                @endif
-
-                <div class="p-4 flex flex-col space-y-2">
-                    <div class="flex justify-between items-center">
-                        @if($product->isNew)
-                        <span class="bg-purple-600 px-4 py-1 rounded-lg text-sm text-white font-bold">Nouveau</span>
-                        @endif
-                        <a href="{{ route('show-product', $product->id) }}" class="text-gray-900 font-bold text-lg">{{ $product->title }}</a>
-                    </div>
-
-                    <div class="flex items-center space-x-1">
-                        <span class="text-yellow-500">
-                            ★★★★☆
-                        </span>
-                        <span class="text-gray-500 text-sm">(15 avis)</span>
-                    </div>
-
-                    <span class="text-gray-900 text-lg font-bold">$ {{ $product->price }}</span>
-
-                    <div class="w-full">
-                        <a href="{{ route('show-product', $product->id) }}" class="bg-purple-600 text-white px-6 py-2 w-full text-center hover:bg-purple-700 transition-colors duration-300 ease-out font-semibold rounded-lg">Payer maintenant</a>
-                    </div>
-                </div>
-            </div>
-            @endforeach
+      <!-- Produits avec filtre -->
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 pt-12">
+    @foreach($products as $product)
+    <div class="relative transform transition-transform hover:scale-105 shadow-lg rounded-lg border border-gray-200 overflow-hidden product-item" data-category="{{ $product->category }}">
+        <div class="relative w-full" style="padding-bottom: 75%;">
+            <img src="{{ asset('img/' . $product->id . '.jpg') }}" class="absolute top-0 left-0 w-full h-full object-cover object-center transition-transform duration-500 hover:scale-110" alt="Image du produit {{ $product->title }}">
         </div>
+
+        @if($product->discount)
+        <span class="absolute top-4 left-4 bg-red-600 px-4 py-2 rounded-lg text-sm text-white font-bold">-{{ $product->discount }}%</span>
+        @endif
+
+        <div class="absolute top-2 right-2">
+            @if($product->isNew)
+            <span class="bg-green-600 px-2 py-1 rounded-lg text-xs text-white font-bold">Nouveau</span>
+            @elseif($product->isUsed)
+            <span class="bg-orange-600 px-2 py-1 rounded-lg text-xs text-white font-bold">Usage</span>
+            @endif
+        </div>
+
+        <div class="p-4 flex flex-col space-y-2">
+            <div class="flex justify-between items-center">
+                <a href="{{ route('show-product', $product->id) }}" class="text-gray-900 font-bold text-lg">{{ $product->title }}</a>
+            </div>
+
+            <!-- État de la disponibilité -->
+            <div class="flex items-center">
+                @if($product->inStock)
+                <span class="text-green-600 font-semibold">En Stock</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-green-600 ml-2" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+                @else
+                <span class="text-red-600 font-semibold">Rupture de Stock</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-red-600 ml-2" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+                @endif
+            </div>
+
+            <span class="text-gray-900 text-lg font-bold">$ {{ $product->price }}</span>
+
+            <!-- Gestion dynamique de la quantité -->
+            <div class="flex items-center justify-between">
+                <div class="flex items-center border border-gray-300 rounded-lg overflow-hidden">
+                    <button class="px-3 py-1 bg-gray-200 hover:bg-gray-300" onclick="decrementQuantity({{ $product->id }})">-</button>
+                    <input type="number" id="quantity-{{ $product->id }}" value="1" min="1" class="w-12 text-center border-none" />
+                    <button class="px-3 py-1 bg-gray-200 hover:bg-gray-300" onclick="incrementQuantity({{ $product->id }})">+</button>
+                </div>
+                <button class="bg-purple-600 text-white px-6 py-2 ml-4 hover:bg-purple-700 transition-colors duration-300 ease-out font-semibold rounded-lg" onclick="addToCart({{ $product->id }})">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 inline-block" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h18l-1.5 9H5.25L4.5 3zM5 15h14v6H5v-6z" />
+                    </svg>
+                    Ajouter au panier
+                </button>
+            </div>
+        </div>
+    </div>
+    @endforeach
+</div>
 
         <!-- Bouton Voir Tous les Produits -->
         <div class="pt-16 text-center">
@@ -93,12 +115,12 @@
     </section>
 
     <!-- Section promotionnelle pour pièces de véhicules -->
-    <section class="max-w-7xl mx-auto pt-28 px-6">
+    <section class="max-w-7xl mx-auto pt-28 px-6" aria-labelledby="promotion-pieces">
         <div class="flex flex-col md:flex-row items-center gap-x-8">
-            <img src="{{ asset('img/4.jpg') }}" class="w-full md:w-1/2 h-full rounded-xl border border-gray-200 parallax" alt="">
+            <img src="{{ asset('img/4.jpg') }}" class="w-full md:w-1/2 h-full rounded-xl border border-gray-200 parallax" alt="Promotion pièces de véhicules">
             <div class="space-y-6">
-                <h3 class="text-3xl font-bold leading-tight tracking-tight">Des pièces de véhicules de qualité à découvrir</h3>
-                <p class="text-gray-600 text-base leading-relaxed">Explorez notre gamme de pièces de rechange de haute qualité pour tous types de véhicules. Que vous soyez un professionnel ou un particulier, nous avons les pièces qu'il vous faut pour un entretien optimal de votre véhicule.</p>
+                <h3 id="promotion-pieces" class="text-3xl font-bold leading-tight tracking-tight">Des pièces de véhicules de qualité à découvrir</h3>
+                <p class="text-gray-600 text-base leading-relaxed">Explorez notre gamme de pièces de rechange de haute qualité pour tous types de véhicules.</p>
                 <ul class="flex flex-col space-y-3">
                     <li class="text-base flex items-center pl-2 gap-x-3">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-purple-600">
@@ -124,7 +146,29 @@
             </div>
         </div>
     </section>
+
+
+    <!-- Panier -->
+<div id="cart" class="fixed top-16 right-4 w-96 bg-white shadow-lg rounded-lg p-6 hidden">
+    <h2 class="text-xl font-bold mb-4">Votre Panier</h2>
+    <div id="cart-items" class="space-y-4"></div>
+    <div class="flex justify-between mt-4">
+        <span class="font-bold">Total :</span>
+        <span id="cart-total" class="font-bold">$0.00</span>
+    </div>
+    <button class="mt-4 bg-purple-600 text-white px-4 py-2 rounded-lg w-full" onclick="checkout()">Passer à la Caisse</button>
 </div>
+
+<!-- Bouton Panier -->
+<button class="fixed bottom-4 right-4 bg-purple-600 text-white p-4 rounded-full" onclick="toggleCart()">
+    🛒
+</button>
+
+</div>
+
+
+
+
 <script>
     // Filtrage des catégories
     function filterCategory(category) {
@@ -136,21 +180,16 @@
             }
         });
     }
-</script>
 
-<script>
     let currentIndex = 0;
     const carouselItems = document.querySelectorAll('.carousel-item');
     const totalItems = carouselItems.length;
 
     function showCarouselItem(index) {
-        // Masquer tous les éléments
-        carouselItems.forEach(item => {
-            item.style.display = 'none';
+        carouselItems.forEach((item, i) => {
+            item.style.display = (i === index) ? 'block' : 'none';
+            item.setAttribute('aria-hidden', i !== index);
         });
-
-        // Afficher l'élément actuel
-        carouselItems[index].style.display = 'block';
     }
 
     function nextSlide() {
@@ -163,9 +202,30 @@
         showCarouselItem(currentIndex);
     }
 
-    // Initialiser le carrousel en affichant le premier élément
     showCarouselItem(currentIndex);
-
-    // Lancer un intervalle pour faire défiler automatiquement le carrousel toutes les 5 secondes
     setInterval(nextSlide, 5000);
+
+
+    
+</script>
+
+<script>
+    function incrementQuantity(productId) {
+        let quantityInput = document.getElementById('quantity-' + productId);
+        quantityInput.value = parseInt(quantityInput.value) + 1;
+    }
+
+    function decrementQuantity(productId) {
+        let quantityInput = document.getElementById('quantity-' + productId);
+        if (quantityInput.value > 1) {
+            quantityInput.value = parseInt(quantityInput.value) - 1;
+        }
+    }
+
+    function addToCart(productId) {
+        let quantityInput = document.getElementById('quantity-' + productId);
+        let quantity = quantityInput.value;
+        // Logique pour ajouter au panier
+        console.log(`Produit ID: ${productId}, Quantité: ${quantity}`);
+    }
 </script>
