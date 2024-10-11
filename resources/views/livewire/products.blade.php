@@ -42,72 +42,80 @@
             <button class="filter-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-lg hover:bg-purple-600 hover:text-white transition-all" onclick="filterCategory('pieces')">Pièces Détachées</button>
         </div>
 
-      <!-- Produits avec filtre -->
-<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 pt-12">
-    @foreach($products as $product)
-    <div class="relative transform transition-transform hover:scale-105 shadow-lg rounded-lg border border-gray-200 overflow-hidden product-item" data-category="{{ $product->category }}">
-        <div class="relative w-full" style="padding-bottom: 75%;">
-            <img src="{{ asset('img/' . $product->id . '.jpg') }}" class="absolute top-0 left-0 w-full h-full object-cover object-center transition-transform duration-500 hover:scale-110" alt="Image du produit {{ $product->title }}">
-        </div>
+        <!-- Produits avec filtre -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 pt-12">
+            @foreach($products as $product)
+                <div class="relative transform transition-transform hover:scale-105 shadow-lg rounded-lg border border-gray-200 overflow-hidden product-item" data-category="{{ $product->category }}">
+                    <div class="relative w-full" style="padding-bottom: 75%;">
+                        <img src="{{ asset('img/' . $product->id . '.jpg') }}" class="absolute top-0 left-0 w-full h-full object-cover object-center transition-transform duration-500 hover:scale-110" alt="Image du produit {{ $product->title }}">
+                    </div>
 
-        @if($product->discount)
-        <span class="absolute top-4 left-4 bg-red-600 px-4 py-2 rounded-lg text-sm text-white font-bold">-{{ $product->discount }}%</span>
-        @endif
+                    @if($product->discount)
+                        <span class="absolute top-4 left-4 bg-red-600 px-4 py-2 rounded-lg text-sm text-white font-bold">-{{ $product->discount }}%</span>
+                    @endif
 
-        <div class="absolute top-2 right-2">
-            @if($product->isNew)
-            <span class="bg-green-600 px-2 py-1 rounded-lg text-xs text-white font-bold">Nouveau</span>
-            @elseif($product->isUsed)
-            <span class="bg-orange-600 px-2 py-1 rounded-lg text-xs text-white font-bold">Usage</span>
-            @endif
-        </div>
+                    <div class="absolute top-2 right-2">
+                        @if($product->isNew)
+                            <span class="bg-green-600 px-2 py-1 rounded-lg text-xs text-white font-bold">Nouveau</span>
+                        @elseif($product->isUsed)
+                            <span class="bg-orange-600 px-2 py-1 rounded-lg text-xs text-white font-bold">Usage</span>
+                        @endif
+                    </div>
 
-        <div class="p-4 flex flex-col space-y-2">
-            <div class="flex justify-between items-center">
-                <a href="{{ route('show-product', $product->id) }}" class="text-gray-900 font-bold text-lg">{{ $product->title }}</a>
-            </div>
+                    <div class="p-4 flex flex-col space-y-2">
+                        <div class="flex justify-between items-center">
+                            <a href="{{ route('show-product', $product->id) }}" class="text-gray-900 font-bold text-lg">{{ $product->title }}</a>
+                        </div>
 
-            <!-- État de la disponibilité -->
-            <div class="flex items-center">
-                @if($product->inStock)
-                <span class="text-green-600 font-semibold">En Stock</span>
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-green-600 ml-2" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                </svg>
-                @else
-                <span class="text-red-600 font-semibold">Rupture de Stock</span>
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-red-600 ml-2" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-                @endif
-            </div>
+                        <!-- État de la disponibilité -->
+                        <div class="flex items-center">
+                            @if($product->inStock)
+                                <span class="text-green-600 font-semibold">En Stock</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-green-600 ml-2" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                                </svg>
+                            @else
+                                <span class="text-red-600 font-semibold">Rupture de Stock</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-red-600 ml-2" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            @endif
+                        </div>
 
-            <span class="text-gray-900 text-lg font-bold">$ {{ $product->price }}</span>
+                        <span class="text-gray-900 text-lg font-bold">$ {{ $product->price }}</span>
 
-            <!-- Gestion dynamique de la quantité -->
-            <div class="flex items-center justify-between">
-                <div class="flex items-center border border-gray-300 rounded-lg overflow-hidden">
-                    <button class="px-3 py-1 bg-gray-200 hover:bg-gray-300" onclick="decrementQuantity({{ $product->id }})">-</button>
-                    <input type="number" id="quantity-{{ $product->id }}" value="1" min="1" class="w-12 text-center border-none" />
-                    <button class="px-3 py-1 bg-gray-200 hover:bg-gray-300" onclick="incrementQuantity({{ $product->id }})">+</button>
+                        <!-- Gestion dynamique de la quantité -->
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center border border-gray-300 rounded-lg overflow-hidden">
+                                <button class="px-3 py-1 bg-gray-200 hover:bg-gray-300" onclick="decrementQuantity({{ $product->id }})">-</button>
+                                <input type="number" id="quantity-{{ $product->id }}" value="1" min="1" class="w-12 text-center border-none" />
+                                <button class="px-3 py-1 bg-gray-200 hover:bg-gray-300" onclick="incrementQuantity({{ $product->id }})">+</button>
+                            </div>
+                            <div class="flex space-x-2">
+                                <button class="bg-purple-600 text-white px-4 py-2 ml-4 hover:bg-purple-700 transition-colors duration-300 ease-out font-semibold rounded-lg" onclick="addToCart({{ $product->id }})">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 inline-block" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h18l-1.5 9H5.25L4.5 3zM5 15h14v6H5v-6z" />
+                                    </svg>
+                                    Ajouter
+                                </button>
+                                <a href="{{ route('show-product', $product->id) }}" class="bg-blue-600 text-white px-4 py-2 ml-4 hover:bg-blue-700 transition-colors duration-300 ease-out font-semibold rounded-lg">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 inline-block" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                    </svg>
+                                    Détails
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <button class="bg-purple-600 text-white px-6 py-2 ml-4 hover:bg-purple-700 transition-colors duration-300 ease-out font-semibold rounded-lg" onclick="addToCart({{ $product->id }})">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 inline-block" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h18l-1.5 9H5.25L4.5 3zM5 15h14v6H5v-6z" />
-                    </svg>
-                    Ajouter au panier
-                </button>
-            </div>
+            @endforeach
         </div>
-    </div>
-    @endforeach
-</div>
 
         <!-- Bouton Voir Tous les Produits -->
         <div class="pt-16 text-center">
             <a href="{{route('articles')}}" class="flex items-center justify-center gap-x-2">
                 <span class="text-sm font-medium text-gray-600">Voir Tous les Produits</span>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-gray-600">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="w-5 h-5 text-gray-600">
                     <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                 </svg>
             </a>
@@ -123,7 +131,7 @@
                 <p class="text-gray-600 text-base leading-relaxed">Explorez notre gamme de pièces de rechange de haute qualité pour tous types de véhicules.</p>
                 <ul class="flex flex-col space-y-3">
                     <li class="text-base flex items-center pl-2 gap-x-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-purple-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="w-6 h-6 text-purple-600">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9V5.25a2.25 2.25 0 0 1 4.5 0V9" />
                             <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 9.75H19.5M7.5 19.5v-4.5a2.25 2.25 0 0 1 4.5 0v4.5" />
                         </svg>
@@ -147,27 +155,22 @@
         </div>
     </section>
 
-
     <!-- Panier -->
-<div id="cart" class="fixed top-16 right-4 w-96 bg-white shadow-lg rounded-lg p-6 hidden">
-    <h2 class="text-xl font-bold mb-4">Votre Panier</h2>
-    <div id="cart-items" class="space-y-4"></div>
-    <div class="flex justify-between mt-4">
-        <span class="font-bold">Total :</span>
-        <span id="cart-total" class="font-bold">$0.00</span>
+    <div id="cart" class="fixed top-16 right-4 w-96 bg-white shadow-lg rounded-lg p-6 hidden">
+        <h2 class="text-xl font-bold mb-4">Votre Panier</h2>
+        <div id="cart-items" class="space-y-4"></div>
+        <div class="flex justify-between mt-4">
+            <span class="font-bold">Total :</span>
+            <span id="cart-total" class="font-bold">$0.00</span>
+        </div>
+        <button class="mt-4 bg-purple-600 text-white px-4 py-2 rounded-lg w-full" onclick="checkout()">Passer à la Caisse</button>
     </div>
-    <button class="mt-4 bg-purple-600 text-white px-4 py-2 rounded-lg w-full" onclick="checkout()">Passer à la Caisse</button>
+
+    <!-- Bouton Panier -->
+    <button class="fixed bottom-4 right-4 bg-purple-600 text-white p-4 rounded-full" onclick="toggleCart()">
+        🛒
+    </button>
 </div>
-
-<!-- Bouton Panier -->
-<button class="fixed bottom-4 right-4 bg-purple-600 text-white p-4 rounded-full" onclick="toggleCart()">
-    🛒
-</button>
-
-</div>
-
-
-
 
 <script>
     // Filtrage des catégories
@@ -205,11 +208,6 @@
     showCarouselItem(currentIndex);
     setInterval(nextSlide, 5000);
 
-
-    
-</script>
-
-<script>
     function incrementQuantity(productId) {
         let quantityInput = document.getElementById('quantity-' + productId);
         quantityInput.value = parseInt(quantityInput.value) + 1;
