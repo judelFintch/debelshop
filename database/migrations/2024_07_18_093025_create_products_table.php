@@ -18,6 +18,7 @@ return new class extends Migration
             $table->decimal('price', 8, 2);
             $table->integer('stock')->default(0);
             $table->boolean('is_new')->default(false);
+            $table->boolean('inStock')->default(true);
             $table->integer('category_id');
             $table->string('image')->nullable(); // Ajoute la colonne image
             $table->timestamps();

@@ -14,6 +14,7 @@ class Products extends Component
 
     public $category = 'all';
     public $categories = [];
+    public $inStock = true;
     public function mount()
     {
       $this->updateProducts();
