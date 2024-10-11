@@ -96,13 +96,13 @@
                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 inline-block" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h18l-1.5 9H5.25L4.5 3zM5 15h14v6H5v-6z" />
                                     </svg>
-                                    Ajouter
+                                
                                 </button>
                                 <a href="{{ route('show-product', $product->id) }}" class="bg-blue-600 text-white px-4 py-2 ml-4 hover:bg-blue-700 transition-colors duration-300 ease-out font-semibold rounded-lg">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 inline-block" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                                     </svg>
-                                    Détails
+                                    
                                 </a>
                             </div>
                         </div>
@@ -173,53 +173,16 @@
 </div>
 
 <script>
-    // Filtrage des catégories
-    function filterCategory(category) {
-        let products = document.querySelectorAll('.product-item');
-        products.forEach(product => {
-            product.style.display = 'block';
-            if (category !== 'all' && product.getAttribute('data-category') !== category) {
-                product.style.display = 'none';
-            }
-        });
-    }
-
-    let currentIndex = 0;
-    const carouselItems = document.querySelectorAll('.carousel-item');
-    const totalItems = carouselItems.length;
-
-    function showCarouselItem(index) {
-        carouselItems.forEach((item, i) => {
-            item.style.display = (i === index) ? 'block' : 'none';
-            item.setAttribute('aria-hidden', i !== index);
-        });
-    }
-
-    function nextSlide() {
-        currentIndex = (currentIndex + 1) % totalItems;
-        showCarouselItem(currentIndex);
-    }
-
-    function previousSlide() {
-        currentIndex = (currentIndex - 1 + totalItems) % totalItems;
-        showCarouselItem(currentIndex);
-    }
-
-    showCarouselItem(currentIndex);
-    setInterval(nextSlide, 5000);
-
     function incrementQuantity(productId) {
         let quantityInput = document.getElementById('quantity-' + productId);
         quantityInput.value = parseInt(quantityInput.value) + 1;
     }
-
     function decrementQuantity(productId) {
         let quantityInput = document.getElementById('quantity-' + productId);
         if (quantityInput.value > 1) {
             quantityInput.value = parseInt(quantityInput.value) - 1;
         }
     }
-
     function addToCart(productId) {
         let quantityInput = document.getElementById('quantity-' + productId);
         let quantity = quantityInput.value;
@@ -227,3 +190,5 @@
         console.log(`Produit ID: ${productId}, Quantité: ${quantity}`);
     }
 </script>
+
+<script src="{{ asset('js/main.js') }}"></script>
