@@ -19,6 +19,9 @@ class ProductDatail extends Component
 {
     public Model $product;
 
+    public $images = array(1, 2, 3);
+    public $colors = array(1, 2, 3);
+
  
 
     #[Validate([
