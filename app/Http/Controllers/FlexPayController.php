@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\Product;
@@ -9,7 +8,6 @@ use Devscast\Maxicash\Credential;
 use Devscast\Maxicash\PaymentEntry;
 use Devscast\Maxicash\Environment;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
 class FlexPayController extends Controller
 {
@@ -21,42 +19,44 @@ class FlexPayController extends Controller
      */
     public function __invoke(Request $request)
     {
-        
+        // Validation des données d'entrée
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
             'address' => 'required|string|max:255',
+            'product_id' => 'required|exists:products,id',
         ]);
 
-       
-        $product = Product::findOrFail($request->input('product_id'));
+        
+        $product = Product::findOrFail($validatedData['product_id']);
 
-        $reference = Str::random(8);
+        $randomNumber = rand(1, 100);
+        $latestOrder = Order::latest()->first();
+        $orderId = $latestOrder ? $latestOrder->id : 0; 
+        $reference = sprintf("ORD/CME/DEBELSHOP/%s/%d/%d", date('Y-m-d'), $orderId, $randomNumber);
+        $priceInCents = intval($product->price * 100);
 
-       
-        $price = intval($product->price * 100);
-
-       
+        // Configuration du client Maxicash
         $maxicash = new Maxicash(
-            credential: new Credential(
+            new Credential(
                 config('services.maxicash.merchant_id'),
                 config('services.maxicash.merchant_password')
             ),
-            environment: Environment::LIVE // Use LIVE environment for production
+            Environment::LIVE // Utiliser l'environnement LIVE pour la production
         );
 
-        
-        $entry = new PaymentEntry(
-            credential: $maxicash->credential,
-            amount: $price,
-            reference: $reference,
-            acceptUrl: route('accepted.payment'),
-            declineUrl: route('rejected.payment'),
-            cancelUrl: route('rejected.payment'),
-            notifyUrl: route('notification')
+        // Création de l'entrée de paiement
+        $paymentEntry = new PaymentEntry(
+            $maxicash->credential,
+            $priceInCents,
+            $reference,
+            route('accepted.payment'),
+            route('rejected.payment'),
+            route('rejected.payment'),
+            route('notification')
         );
 
-      
+        // Création de la commande
         Order::create([
             'name' => $validatedData['name'],
             'email' => $validatedData['email'],
@@ -65,13 +65,12 @@ class FlexPayController extends Controller
             'product_description' => $product->id,
             'product_title' => $product->title,
             'product_price' => $product->price,
-            'status' => 'pending', // Default to "pending"
+            'status' => 'pending', // reactored status
             'reference' => $reference,
         ]);
 
-       
-        $paymentUrl = $maxicash->queryStringURLPayment($entry);
-
+        // Redirection vers l'URL de paiement
+        $paymentUrl = $maxicash->queryStringURLPayment($paymentEntry);
         return redirect()->to($paymentUrl);
     }
 }

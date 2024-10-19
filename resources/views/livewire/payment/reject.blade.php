@@ -16,7 +16,7 @@
 
             <div class="space-y-6 pt-2">
                 <p class="text-sm text-center leading-loose text-gray-600">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit
+             Nous vous prions de bien vouloir consulter votre banque pour vérifier l'état de votre transaction. Si vous pensez que tout est correct et que le problème persiste, n'hésitez pas à nous écrire à l'adresse suivante : sales@debelshop.com. Nous sommes là pour vous aider !
                 </p>
                 <div class="flex items-center justify-center gap-x-4">
                     <a wire:navigate href="{{ route('products') }}" class="px-6 py-2 bg-purple-600 text-white font-bold rounded-lg shadow-sm hover:bg-purple-700 transition-colors duration-300 ease-in">Retour à l'accueil</a>
