@@ -12,12 +12,12 @@ use Illuminate\Http\Request;
 class FlexPayController extends Controller
 {
     /**
-     * Handle the incoming payment request.
+     * Handle the payment request.
      *
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function __invoke(Request $request)
+    public function handlePayment(Request $request)
     {
         // Validation des données d'entrée
         $validatedData = $request->validate([
@@ -27,12 +27,11 @@ class FlexPayController extends Controller
             'product_id' => 'required|exists:products,id',
         ]);
 
-        
         $product = Product::findOrFail($validatedData['product_id']);
 
         $randomNumber = rand(1, 100);
         $latestOrder = Order::latest()->first();
-        $orderId = $latestOrder ? $latestOrder->id : 0; 
+        $orderId = $latestOrder ? $latestOrder->id : 0;
         $reference = sprintf("ORD/CME/DEBELSHOP/%s/%d/%d", date('Y-m-d'), $orderId, $randomNumber);
         $priceInCents = intval($product->price * 100);
 
@@ -65,11 +64,11 @@ class FlexPayController extends Controller
             'product_description' => $product->id,
             'product_title' => $product->title,
             'product_price' => $product->price,
-            'status' => 'pending', // reactored status
+            'status' => 'pending',
             'reference' => $reference,
         ]);
 
-        // Redirection vers l'URL de paiement
+        // Redirection vers l'URL de paiement Maxicash
         $paymentUrl = $maxicash->queryStringURLPayment($paymentEntry);
         return redirect()->to($paymentUrl);
     }
