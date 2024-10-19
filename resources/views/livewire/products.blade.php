@@ -2,23 +2,23 @@
 
 <style>
     #cart-items img {
-        width: 50px; /* Taille de l'image */
-        height: 50px; /* Taille de l'image */
-        object-fit: cover; /* Pour garder le ratio */
-        margin-right: 10px; /* Espace entre l'image et le texte */
+        width: 50px; 
+        height: 50px; 
+        object-fit: cover; 
+        margin-right: 10px; 
     }
     .cart-item {
-        display: flex; /* Aligner l'image et le texte sur une ligne */
-        align-items: center; /* Centrer verticalement */
+        display: flex;
+        align-items: center; 
     }
 </style>
-    <!-- Notification de maintenance -->
+
     <div class="bg-yellow-500 text-black text-center py-3 shadow-lg relative" role="alert">
         <p class="font-medium">🔧Le site est en cours de maintenance et de travaux. Il est possible que vous rencontriez des perturbations. Merci de bien vouloir attendre la fin prévue le 11/11/2024..</p>
         <button class="absolute top-2 right-4 text-black" aria-label="Fermer la notification" onclick="this.parentElement.style.display='none'">✖</button>
     </div>
 
-    <!-- Carrousel d'images -->
+    
     <section class="relative w-full overflow-hidden" aria-label="Carrousel d'images">
         <div class="carousel-wrapper flex transition-transform duration-700">
             <div class="carousel-item w-full" aria-hidden="false">
@@ -31,8 +31,10 @@
         <div class="absolute inset-0">
             <div class="max-w-7xl mx-auto pt-28 space-y-8 px-6">
                 <div class="w-full md:w-2/3 space-y-4">
-                    <h2 class="text-6xl font-bold tracking-tight text-white leading-tight">La qualité est notre priorité</h2>
-                    <p class="text-gray-100 font-medium leading-relaxed text-lg">Nous nous engageons à vous fournir des véhicules fiables et des pièces automobiles de haute qualité.</p>
+                    <h2 class="text-6xl font-bold tracking-tight text-white leading-tight">La qualité et la confiance, notre engagement chez Debelshop</h2>
+                    <p class="text-gray-100 font-medium leading-relaxed text-lg">
+                        Chez Debelshop, la qualité est notre priorité. Nous nous engageons à vous fournir des véhicules fiables et des pièces automobiles de haute qualité,
+                         soigneusement sélectionnées pour garantir performance et durabilité.</p>
                 </div>
                 <div class="flex items-center gap-x-6">
                     <a href="#" class="hover-btn bg-purple-600 text-white px-8 py-3 rounded-lg shadow transition duration-200 ease-in-out transform hover:scale-105">Découvrir</a>
