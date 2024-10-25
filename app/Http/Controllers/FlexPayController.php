@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Order;
+use App\Models\DetailsOrder;
 use Devscast\Maxicash\Client as Maxicash;
 use Devscast\Maxicash\Credential;
 use Devscast\Maxicash\PaymentEntry;
@@ -55,17 +56,24 @@ class FlexPayController extends Controller
             route('notification')
         );
 
-        // Création de la commande
-        Order::create([
+
+        Order ::create([
             'name' => $validatedData['name'],
             'email' => $validatedData['email'],
             'address' => $validatedData['address'],
+            'status' => 'pending',
+            'reference' => $reference,
+            
+        ]);
+
+        // Création de la commande
+        DetailsOrder::create([
+            'order_id' => Order::latest()->first()->id,
             'quantity' => 1,
             'product_description' => $product->id,
             'product_title' => $product->title,
             'product_price' => $product->price,
-            'status' => 'pending',
-            'reference' => $reference,
+    
         ]);
 
         // Redirection vers l'URL de paiement Maxicash

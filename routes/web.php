@@ -12,7 +12,8 @@ Route::get('/articles', \App\Livewire\Articles\Articles::class)->name('articles'
 Route::get('/about', \App\Livewire\About\About::class)->name('about');
 Route::get('/{product}', \App\Livewire\ProductDatail::class)->name('show-product');
 
-
+//a supprime au plus vide
+Route::get('/accepted/payment', \App\Livewire\Payment\Success::class)->name('accepted.payment');
 
 Route::group(['prefix' => 'process'], function () {
 

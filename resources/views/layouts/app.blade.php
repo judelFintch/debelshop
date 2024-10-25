@@ -116,7 +116,12 @@
             <div class="space-y-4">
                 <h3 class="text-lg font-semibold text-gray-800">Soutien</h3>
                 <ul class="space-y-1">
-                    <li><a href="#" class="text-sm font-medium text-gray-600">Support</a></li>
+                    <?php 
+                    $test = 'REF-OOC-09999488/47474';
+
+                    ?>
+                    <li><a href="{{route('accepted.payment')}}" class="text-sm font-medium text-gray-600">Support</a></li>
+
                     <li><a href="#" class="text-sm font-medium text-gray-600">Conditions</a></li>
                     <li><a href="#" class="text-sm font-medium text-gray-600">Confidentialité</a></li>
                 </ul>

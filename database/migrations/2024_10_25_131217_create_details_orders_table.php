@@ -11,14 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('orders', function (Blueprint $table) {
+        Schema::create('details_orders', function (Blueprint $table) {
+    
             $table->id();
-            $table->string('reference')->unique();
-            $table->string('name'); 
-            $table->string('tel')->nullable(); 
-            $table->string('email'); 
-            $table->string('address'); 
+            $table->integer('quantity');
+            $table->string('product_title');
+            $table->decimal('product_price', 8, 2); 
+            $table->text('product_description'); //
             $table->string('status')->default('pending'); // Statut de la commande (pending, completed, canceled)
+            $table->unsignedBigInteger('order_id');
+            $table->foreign('order_id')->references('id')->on('orders');
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('orders');
+        Schema::dropIfExists('details_orders');
     }
 };
