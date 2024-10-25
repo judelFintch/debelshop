@@ -20,7 +20,7 @@ return new class extends Migration
             $table->text('product_description'); //
             $table->string('status')->default('pending'); // Statut de la commande (pending, completed, canceled)
             $table->unsignedBigInteger('order_id');
-            $table->foreign('order_id')->references('id')->on('orders');
+           // $table->foreign('order_id')->references('id')->on('orders');
             $table->timestamps();
         });
     }

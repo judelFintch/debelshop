@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('image')->nullable(); // Ajoute la colonne image
             $table->timestamps();
             // Ajout de clés étrangères
-           $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+           //$table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
         });
     }
 
