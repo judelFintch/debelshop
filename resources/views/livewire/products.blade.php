@@ -13,10 +13,7 @@
     }
 </style>
 
-    <div class="bg-yellow-500 text-black text-center py-3 shadow-lg relative" role="alert">
-        <p class="font-medium">🔧Le site est en cours de maintenance et de travaux. Il est possible que vous rencontriez des perturbations. Merci de bien vouloir attendre la fin prévue le 11/11/2024..</p>
-        <button class="absolute top-2 right-4 text-black" aria-label="Fermer la notification" onclick="this.parentElement.style.display='none'">✖</button>
-    </div>
+    
 
     
     <section class="relative w-full overflow-hidden" aria-label="Carrousel d'images">
