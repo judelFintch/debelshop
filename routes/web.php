@@ -18,7 +18,7 @@ Route::get('/active', \App\Livewire\Guest\Error\Active::class)->name('active');
 
 // Routes avec middleware auth
 Route::middleware(['auth', 'verified', 'check.active'])->group(function () {
-    Route::view('/dashboard', 'dashboard')->name('dashboard');
+    Route::get('/dashboard', \App\Livewire\Admin\Home\Home::class)->name('dashboard');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

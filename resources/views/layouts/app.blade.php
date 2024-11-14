@@ -1,30 +1,56 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Laravel') }} - Dashboard</title>
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    <!-- Fonts -->
+    <title>DebelShop Test</title>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.10.2/cdn.min.js"></script>
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
 
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
-    <body class="font-sans text-gray-900 antialiased">
-        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
-            <div>
-                <a href="/">
-                    <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-                </a>
+    <!-- Scripts -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+</head>
+<body class="font-sans text-gray-900 antialiased bg-gray-100">
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <div class="w-64 bg-gray-800 text-white flex flex-col">
+            <div class="p-4 text-center font-bold text-xl">
+                {{ config('app.name', 'Laravel') }}
             </div>
+            <nav class="flex-grow">
+                <ul>
+                    <li>
+                        <a href="{{ route('dashboard') }}" class="block p-4 hover:bg-gray-700">Dashboard</a>
+                    </li>
+                    <!-- Ajoutez d'autres liens de navigation ici -->
+                    <li>
+                        <a href="" class="block p-4 hover:bg-gray-700">Profile</a>
+                    </li>
+                    <!-- Logout -->
+                    <li>
+                        <form action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <button type="submit" class="block w-full p-4 text-left hover:bg-gray-700">Logout</button>
+                        </form>
+                    </li>
+                </ul>
+            </nav>
+        </div>
 
-            <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
-                {{ $slot }}
+        <!-- Main content -->
+        <div class="flex-1 p-6">
+            <!-- Dashboard content -->
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                {{ $slot }} <!-- Le contenu de la page spécifique sera injecté ici -->
             </div>
         </div>
-    </body>
+    </div>
+</body>
 </html>
