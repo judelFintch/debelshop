@@ -9,7 +9,7 @@ class Support extends Component
 {
 
 
-    #[Layout('layouts.app')]
+    #[Layout('layouts.guest')]
     public function render()
     {
        // return view('livewire.guest.support.support');

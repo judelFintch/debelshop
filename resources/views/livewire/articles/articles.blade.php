@@ -1,10 +1,6 @@
 <div>
 
-    <div class="bg-yellow-500 text-black text-center py-3 shadow-lg relative">
-        <p class="font-medium">🔧 Une maintenance et des travaux de mise à niveau sont en cours sur le site. Merci de votre patience !</p>
-        <button class="absolute top-2 right-4 text-black" onclick="this.parentElement.style.display='none'">✖</button>
-    </div>
-
+   
     
     
 
@@ -69,7 +65,7 @@
                         @if($product->isNew)
                         <span class="bg-purple-600 px-4 py-1 rounded-lg text-sm text-white font-bold">Nouveau</span>
                         @endif
-                        <a wire:navigate href="{{ route('show-product', $product->id) }}" class="text-gray-900 font-bold text-lg">{{ $product->title }}</a>
+                        <a wire:navigate href="{{ route('show.product', $product->id) }}" class="text-gray-900 font-bold text-lg">{{ $product->title }}</a>
                     </div>
                     
                     <!-- Avis produit -->
@@ -83,7 +79,7 @@
 
                 
                     <div class="w-full">
-                        <a wire:navigate href="{{ route('show-product', $product->id) }}" class="bg-purple-600 text-white px-6 py-2 w-full text-center hover:bg-purple-700 transition-colors duration-300 ease-out font-semibold rounded-lg">Payer maintenant</a>
+                        <a wire:navigate href="{{ route('show.product', $product->id) }}" class="bg-purple-600 text-white px-6 py-2 w-full text-center hover:bg-purple-700 transition-colors duration-300 ease-out font-semibold rounded-lg">Payer maintenant</a>
                     </div>
                 </div>
             </div>

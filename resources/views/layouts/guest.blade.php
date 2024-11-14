@@ -45,10 +45,10 @@
             </div>
 
             <ul class="hidden md:flex items-center gap-x-4">
-                <li><a  href="" class="text-sm font-bold text-purple-600 transition-colors duration-300 border-b-2 border-purple-400">Accueil</a></li>
-                <li><a wire:navigate href="" class="text-sm font-bold text-gray-600 hover:text-purple-600 transition-colors duration-300 hover:border-b-2 hover:border-purple-400">Articles</a></li>
-                <li><a wire:navigate href="" class="text-sm font-bold text-gray-600 hover:text-purple-600 transition-colors duration-300 hover:border-b-2 hover:border-purple-400">A propos</a></li>
-                <li><a wire:navigate href="" class="text-sm font-bold text-gray-600 hover:text-purple-600 transition-colors duration-300 hover:border-b-2 hover:border-purple-400">Contact</a></li>
+                <li><a  href="{{route('products')}}" class="text-sm font-bold text-purple-600 transition-colors duration-300 border-b-2 border-purple-400">Accueil</a></li>
+                <li><a wire:navigate href="{{route('articles')}}" class="text-sm font-bold text-gray-600 hover:text-purple-600 transition-colors duration-300 hover:border-b-2 hover:border-purple-400">Articles</a></li>
+                <li><a wire:navigate href="{{route('about')}}" class="text-sm font-bold text-gray-600 hover:text-purple-600 transition-colors duration-300 hover:border-b-2 hover:border-purple-400">A propos</a></li>
+                <li><a wire:navigate href="{{route('contact')}}" class="text-sm font-bold text-gray-600 hover:text-purple-600 transition-colors duration-300 hover:border-b-2 hover:border-purple-400">Contact</a></li>
             </ul>
 
             <div class="hidden md:flex items-center gap-x-4">
@@ -67,7 +67,7 @@
 
         <div x-show="menuOpen" class="md:hidden mt-4 space-y-4">
             <ul class="flex flex-col items-center space-y-4">
-                <li><a wire:navigate href="" class="text-sm font-bold text-purple-600">Accueil</a></li>
+                <li><a wire:navigate href="{{route('products')}}" class="text-sm font-bold text-purple-600">Accueil</a></li>
                 <li><a wire:navigate href="#" class="text-sm font-bold text-gray-600 hover:text-purple-600">Articles</a></li>
                 <li><a wire:navigate href="#" class="text-sm font-bold text-gray-600 hover:text-purple-600">A propos</a></li>
                 <li><a wire:navigate href="#" class="text-sm font-bold text-gray-600 hover:text-purple-600">Contact</a></li>
@@ -108,9 +108,9 @@
             <div class="space-y-4">
                 <h3 class="text-lg font-semibold text-gray-800">Découverte</h3>
                 <ul class="space-y-1">
-                    <li><a href="" class="text-sm font-medium text-gray-600">Articles</a></li>
+                    <li><a href="{{route('articles')}}" class="text-sm font-medium text-gray-600">Articles</a></li>
                     <li><a href="#" class="text-sm font-medium text-gray-600">Catégories</a></li>
-                    <li><a href="" class="text-sm font-medium text-gray-600">À propos</a></li>
+                    <li><a href="{{route('about')}}" class="text-sm font-medium text-gray-600">À propos</a></li>
                 </ul>
             </div>
             <div class="space-y-4">
@@ -142,4 +142,3 @@
 
 </body>
 </html>
-

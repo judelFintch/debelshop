@@ -10,7 +10,7 @@ class Articles extends Component
 {
 
 
-    #[Layout('layouts.app')]
+    #[Layout('layouts.guest')]
     public function render()
     {
         return view('livewire.articles.articles', [

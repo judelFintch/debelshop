@@ -1,10 +1,6 @@
 <div>
     <!-- Alerte de maintenance -->
-    <div class="bg-yellow-500 text-black text-center py-3 shadow-lg relative">
-        <p class="font-medium">🔧 Une maintenance et des travaux de mise à niveau sont en cours sur le site. Merci de votre patience !</p>
-        <button class="absolute top-2 right-4 text-black" onclick="this.parentElement.style.display='none'">✖</button>
-    </div>
-
+    
     <!-- Section d'introduction avec une image de fond -->
     <section>
         <div class="relative">
