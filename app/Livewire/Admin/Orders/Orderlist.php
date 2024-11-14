@@ -28,7 +28,7 @@ class Orderlist extends Component
             $order->save();
 
             // Recharger les commandes après mise à jour
-            $this->orders = Order::all();
+            $this->orders = Order::orderBy('created_at', 'desc')->get(); //
             session()->flash('message', 'Statut de la commande mis à jour.');
         }
     }
