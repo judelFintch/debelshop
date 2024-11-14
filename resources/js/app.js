@@ -1,10 +1,7 @@
-import Splide from '@splidejs/splide';
+import './bootstrap';
 
-new Splide('.splide', {
-    type: 'loop',
-    perPage: 3,
-    autoplay: true,
-    interval: 5000,
-    pauseOnHover: false,
-    pagination: false
-}).mount();
+import Alpine from 'alpinejs';
+
+window.Alpine = Alpine;
+
+Alpine.start();

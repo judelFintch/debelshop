@@ -3,23 +3,21 @@
     <section class="mx-auto max-w-5xl px-4">
         <div class="flex flex-col md:flex-row items-center gap-x-8">
             @php
-            foreach ($imageExtensions as $extension) {
-                $path = public_path('img/' . $product->id . '.' . $extension);
-                if (file_exists($path)) {
-                    $imagePath = asset('img/' . $product->id . '.' . $extension);
-                    break; // Si une image est trouvée, on arrête la boucle
+                foreach ($imageExtensions as $extension) {
+                    $path = public_path('img/' . $product->id . '.' . $extension);
+                    if (file_exists($path)) {
+                        $imagePath = asset('img/' . $product->id . '.' . $extension);
+                        break;
+                    }
                 }
-            }
-        @endphp
-        @if ($imagePath)
-        <img src="{{  $imagePath }}"
-        class="rounded-lg w-full md:w-[570px] h-auto object-cover object-center" alt="{{ $product->title }}">
+            @endphp
+            @if ($imagePath)
+                <img src="{{ $imagePath }}" class="rounded-lg w-full md:w-[570px] h-auto object-cover object-center"
+                    alt="{{ $product->title }}">
+            @else
+                <img src="{{ asset('img/default.jpg') }}" alt="Image par défaut">
+            @endif
 
-       
-    @else
-        <img src="{{ asset('img/default.jpg') }}" alt="Image par défaut">
-    @endif
-           
             <div class="space-y-4 mt-4 md:mt-0">
                 <h4 class="text-purple-600 font-semibold">New: Version 2024</h4>
                 <h2 class="text-3xl font-bold uppercase">{{ $product->title }}</h2>
@@ -81,9 +79,6 @@
                     @else
                         <img src="{{ asset('img/default.jpg') }}" alt="Image par défaut">
                     @endif
-
-                 
-                        
                     <a href="#"
                         class="absolute inset-0 flex justify-end px-4 py-4 hover:bg-black/30 transition-opacity">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"

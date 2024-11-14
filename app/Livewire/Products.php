@@ -8,7 +8,7 @@ use Livewire\Attributes\Layout;
 use Livewire\Component;
 use App\Models\Category;
 
-#[Layout('layouts.app')]
+#[Layout('layouts.guest')]
 class Products extends Component
 {
 

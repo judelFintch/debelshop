@@ -1,34 +1,18 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FlexPayController;
 use App\Http\Controllers\MaxiNotifyPaymentController;
 use App\Http\Controllers\ProductController;
+use Illuminate\Support\Facades\Route;
 
-/*Route::get('/', function () {
-    return view('welcome');
-});*/
 
 
 Route::get('/',  \App\Livewire\Products::class)->name('products');
-
 Route::get('/contact', \App\Livewire\Contact\Contact::class)->name('contact');
 Route::get('/articles', \App\Livewire\Articles\Articles::class)->name('articles');
 Route::get('/about', \App\Livewire\About\About::class)->name('about');
-Route::get('/product/{id}', \App\Livewire\ProductDatail::class)->name('show.product');
+Route::get('/{product}', \App\Livewire\ProductDatail::class)->name('show-product');
 Route::get('/support', \App\Livewire\Guest\Support\Support::class)->name('support');
-
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
 
 //a supprime au plus vide
 Route::get('/accepted/payment', \App\Livewire\Payment\Success::class)->name('accepted.payment');
@@ -40,6 +24,3 @@ Route::group(['prefix' => 'process'], function () {
     Route::get('/rejected/payment', \App\Livewire\Payment\Reject::class)->name('rejected.payment');
     Route::get('/notification', [MaxiNotifyPaymentController::class, 'handleNotification'])->name('notification');
 });
-
-
-require __DIR__.'/auth.php';

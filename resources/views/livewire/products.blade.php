@@ -117,7 +117,7 @@
 
                     <div class="p-4 flex flex-col space-y-2">
                         <div class="flex justify-between items-center">
-                            <a href="{{ route('show-product', $product->id) }}"
+                            --<a href=" {{route('show.product', $product->id) }}"
                                 class="text-gray-900 font-bold text-lg">{{ $product->title }}</a>
                         </div>
 
@@ -161,7 +161,7 @@
                                     </svg>
 
                                 </button>
-                                <a href="{{ route('show-product', $product->id) }}"
+                                <a href=" {{route('show.product', $product->id) }}"
                                     class="bg-blue-600 text-white px-4 py-2 ml-4 hover:bg-blue-700 transition-colors duration-300 ease-out font-semibold rounded-lg">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 inline-block"
                                         fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -179,7 +179,7 @@
 
         <!-- Bouton Voir Tous les Produits -->
         <div class="pt-16 text-center">
-            <a href="{{ route('articles') }}" class="flex items-center justify-center gap-x-2">
+            <a href="" class="flex items-center justify-center gap-x-2">
                 <span class="text-sm font-medium text-gray-600">Voir Tous les Produits</span>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     class="w-5 h-5 text-gray-600">
