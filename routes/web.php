@@ -13,10 +13,11 @@ Route::get('/articles', \App\Livewire\Articles\Articles::class)->name('articles'
 Route::get('/about', \App\Livewire\About\About::class)->name('about');
 Route::get('/product/{id}', \App\Livewire\ProductDatail::class)->name('show.product');
 Route::get('/support', \App\Livewire\Guest\Support\Support::class)->name('support');
+Route::get('/active', \App\Livewire\Guest\Error\Active::class)->name('active');
 
 
 // Routes avec middleware auth
-Route::middleware(['auth', 'verified'])->group(function () {
+Route::middleware(['auth', 'verified', 'check.active'])->group(function () {
     Route::view('/dashboard', 'dashboard')->name('dashboard');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
