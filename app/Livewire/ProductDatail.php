@@ -20,6 +20,7 @@ class ProductDatail extends Component
     public Model $product;
 
     public $images = array(1, 2, 3);
+    public  $imageExtensions = ['jpg', 'jpeg', 'png']; // Liste des extensions à vérifier
     public $colors = array(1, 2, 3);
 
  

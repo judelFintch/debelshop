@@ -120,7 +120,7 @@
                     $test = 'REF-OOC-09999488/47474';
 
                     ?>
-                    <li><a href="{{route('accepted.payment')}}" class="text-sm font-medium text-gray-600">Support</a></li>
+                    <li><a href="" class="text-sm font-medium text-gray-600">Support</a></li>
 
                     <li><a href="#" class="text-sm font-medium text-gray-600">Conditions</a></li>
                     <li><a href="#" class="text-sm font-medium text-gray-600">Confidentialité</a></li>
