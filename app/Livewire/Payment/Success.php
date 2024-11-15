@@ -7,7 +7,7 @@ use Livewire\Attributes\Layout;
 use Livewire\Component;
 use App\Models\DetailsOrder;
 
-#[Layout('layouts.app')]
+#[Layout('layouts.guest')]
 class Success extends Component
 {
     public array $request;

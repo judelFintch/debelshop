@@ -14,16 +14,18 @@ use Livewire\Attributes\Layout;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
-#[Layout('layouts.app')]
+#[Layout('layouts.guest')]
 class ProductDatail extends Component
 {
     public Model $product;
 
     public $images = array(1, 2, 3);
     public  $imageExtensions = ['jpg', 'jpeg', 'png']; // Liste des extensions à vérifier
+   
+    public $imagePath = null;
     public $colors = array(1, 2, 3);
 
- 
+
 
     #[Validate([
         'required'
@@ -45,9 +47,9 @@ class ProductDatail extends Component
     ])]
     public ?string $currency = '';
 
-    public function mount(Product $product): void
+    public function mount($id): void
     {
-        $this->product = $product;
+        $this->product = Product::find($id);
        
     }
     public function render(): View

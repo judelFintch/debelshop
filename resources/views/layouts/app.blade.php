@@ -9,10 +9,9 @@
 
     <!-- Fonts -->
     <title>DebelShop Test</title>
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.10.2/cdn.min.js"></script>
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
+    <link rel="stylesheet" href="{{ asset('admin/assets/css/dashlite.css?ver=3.1.2') }}">
+    <link id="skin-default" rel="{{ asset('stylesheet" href="admin/assets/css/theme.css?ver=3.1.2') }}">
+
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -52,5 +51,9 @@
             </div>
         </div>
     </div>
+
+    <script src="{{ asset('admin/assets/js/bundle.js?ver=3.1.2') }}"></script>
+    <script src="{{ asset('admin/assets/js/scripts.js?ver=3.1.2') }}"></script>
+    <script src="{{ asset('admin/assets/js/charts/chart-ecommerce.js?ver=3.1.2') }}">
 </body>
 </html>

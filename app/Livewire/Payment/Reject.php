@@ -6,7 +6,7 @@ use Livewire\Attributes\Layout;
 use Livewire\Component;
 use App\Models\Order;
 
-#[Layout('layouts.app')]
+#[Layout('layouts.guest')]
 class Reject extends Component
 {
     public array $request;
