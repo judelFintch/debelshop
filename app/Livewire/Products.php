@@ -8,11 +8,12 @@ use Livewire\Attributes\Layout;
 use Livewire\Component;
 use App\Models\Category;
 
-#[Layout('layouts.app')]
+#[Layout('layouts.guest')]
 class Products extends Component
 {
 
     public $category = 'all';
+    public  $imageExtensions = ['jpg', 'jpeg', 'png']; // Liste des extensions à vérifier
     public $categories = [];
     public $inStock = true;
     public $images = ['1,2,3,4,5,6,7,8,9'];
@@ -37,6 +38,12 @@ class Products extends Component
                 'price' => 5000,
                 'category_id' => 1,
                 'description' => 'Le véhicule Noah à 4 cylindres essence offre une excellente performance et une grande fiabilité, idéal pour les trajets en famille ou les longs voyages.'
+            ],
+            12 => [
+                'title' => 'Bougie Boch',
+                'price' => 3,
+                'category_id' => 1,
+                'description' => 'B'
             ],
             2 => [
                 'title' => 'Alphard 2002',
@@ -68,30 +75,31 @@ class Products extends Component
                 'category_id' => 1,
                 'description' => 'Batterie grand format avec une capacité élevée pour garantir une longue durée de vie et des performances stables dans tous les environnements.'
             ],
-
             7 => [
                 'title' => 'Vilebrequin',
                 'price' => 500,
                 'category_id' => 1,
                 'description' => 'Vilebrequin pour moteur, essentiel pour la conversion du mouvement linéaire des pistons en mouvement rotatif.'
             ],
-
             8 => [
                 'title' => 'Transmission Alphard',
                 'price' => 400,
                 'category_id' => 1,
                 'description' => 'Système de transmission pour véhicule Toyota Alphard, permettant de transférer la puissance du moteur aux roues.'
             ],
-
             9 => [
                 'title' => 'Boite de vitesse',
                 'price' => 1000,
                 'category_id' => 1,
                 'description' => 'Boite de vitesse manuelle, assurant le contrôle du régime moteur et la transmission de puissance à différents rapports.'
             ],
-
+            10 => [
+                'title' => 'Bougie Boch',
+                'price' => 3,
+                'category_id' => 1,
+                'description' => 'Bougie d’allumage de marque Boch, garantissant un démarrage optimal du moteur et une performance fiable.'
+            ]
         ];
-
         foreach ($updates as $id => $data) {
             $product = Product::find($id);
             if ($product) {

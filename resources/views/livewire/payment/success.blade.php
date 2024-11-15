@@ -1,32 +1,81 @@
 <div>
-    <div class="mx-auto max-w-lg py-20">
-        <div class="flex flex-col items-center justify-center space-y-3">
-            <div class="border-b-2 border-dashed border-gray-200 pb-8">
-                <div class="flex flex-col justify-center items-center space-y-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-20 text-3xl text-purple-600">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" />
-                    </svg>
-                    <p class="text-gray-600 text-lg font-semibold">Incroyable</p>
+    <div class="mx-auto max-w-3xl py-20">
+        <div class="border border-gray-300 p-8 rounded-lg shadow-lg">
+            <!-- En-tête de la facture -->
+            <div class="flex justify-between items-center border-b border-dashed pb-4 mb-4">
+                <div>
+                    <h1 class="text-3xl font-bold text-gray-800">Facture</h1>
+                    <p class="text-sm text-gray-600">Date: <span class="font-semibold"></span></p>
+                    <p class="text-sm text-gray-600">Numéro de référence: <span class="font-semibold">{{ $request['reference'] }}</span></p>
                 </div>
-
-                <div class="text-center space-y-2">
-                    <h1 class="text-2xl font-bold text-gray-800 mt-4">Feliciation. Paiement effectué avec succès</h1>
-                    <p >
-                        <span class="text-gray-500 uppercase text-sm font-semibold">Numero de Reference:</span>
-                        <span class="text-lg font-bold text-gray-950">#{{ $request['reference'] }}</span>
-                    </p>
+                <div class="text-right">
+                    <p class="text-lg font-semibold text-purple-600">DEBELSHOP</p>
+                    <p class="text-sm text-gray-600">34 av kibati Q: Industriel</p>
+                    <p class="text-sm text-gray-600">Téléphone: +243 974 762 200</p>
                 </div>
             </div>
-
-            <div class="space-y-6 pt-2">
-                <p class="text-sm text-center leading-loose text-gray-600">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit
-                </p>
-                <div class="flex items-center justify-center gap-x-4">
-                    <a wire:navigate href="{{ route('products') }}" class="px-6 py-2 bg-purple-600 text-white font-bold rounded-lg shadow-sm hover:bg-purple-700 transition-colors duration-300 ease-in">Retour à l'accueil</a>
-                    <a wire:navigate href="{{ route('products') }}" class="px-6 py-2 border border-gray-200 bg-gray-200 text-gray-800 font-bold rounded-lg shadow-sm hover:bg-gray-300 transition-colors duration-300 ease-in">Voir mes commandes</a>
+            
+    
+            <!-- Informations du client -->
+            <div class="mb-6">
+                <p class="text-lg font-semibold text-gray-800">Facturé à :</p>
+                <p class="text-sm text-gray-600">Nom: <span class="font-semibold"></span></p>
+                <p class="text-sm text-gray-600">Adresse: <span class="font-semibold"></span></p>
+                <p class="text-sm text-gray-600">Email : <span class="font-semibold"></span></p>
+            </div>
+    
+            <!-- Détails de la commande -->
+            <div class="mb-6">
+                <table class="w-full text-sm text-gray-600">
+                    <thead>
+                        <tr class="border-b border-gray-200">
+                            <th class="py-2 text-left">Article</th>
+                            <th class="py-2 text-right">Quantité</th>
+                            <th class="py-2 text-right">Prix unitaire</th>
+                            <th class="py-2 text-right">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+        
+                        <tr class="border-b border-gray-200">
+                            <td class="py-2"><strong>{{ $ordersDetails['name'] }}</strong><br><span class="text-gray-500">Description: {{ $ordersDetails['name'] }}</span></td>
+                            <td class="py-2 text-right">{{ $ordersDetails['quantity'] }}</td>
+                            <td class="py-2 text-right">€{{ number_format($ordersDetails['product_price'], 2) }}</td>
+                            <td class="py-2 text-right">€{{ number_format($ordersDetails['product_price'] * $ordersDetails['quantity'], 2) }}</td>
+                        </tr>
+            
+                    </tbody>
+                </table>
+            </div>
+    
+            <!-- Récapitulatif des coûts -->
+            <div class="border-t border-dashed pt-4 mb-6">
+                <div class="flex justify-between text-sm">
+                    <span class="text-gray-600">Sous-total</span>
+                    <span class="font-semibold text-gray-800">€</span>
                 </div>
+                <div class="flex justify-between text-sm">
+                    <span class="text-gray-600">TVA (20%)</span>
+                    <span class="font-semibold text-gray-800">€</span>
+                </div>
+                <div class="flex justify-between text-sm font-semibold">
+                    <span class="text-gray-800">Total</span>
+                    <span class="text-gray-800">€</span>
+                </div>
+            </div>
+    
+            <!-- Statut de la commande -->
+            <div class="mb-6">
+                <p class="text-sm text-gray-600"><strong>Statut de la commande :</strong> <span class="font-semibold">{{ $ordersDetails['status'] }}</span></p>
+                <p class="text-sm text-gray-600"><strong>Date de création :</strong> <span class="font-semibold">{{ $ordersDetails['created_at'] }}</span></p>
+            </div>
+    
+            <!-- Boutons d'action -->
+            <div class="flex items-center justify-center gap-x-4">
+                <a href="{{ route('products') }}" class="px-6 py-3 bg-purple-600 text-white font-bold rounded-lg shadow-sm hover:bg-purple-700 transition-colors duration-300 ease-in">Retour à l'accueil</a>
+                <a href="" class="px-6 py-3 border border-gray-200 bg-gray-200 text-gray-800 font-bold rounded-lg shadow-sm hover:bg-gray-300 transition-colors duration-300 ease-in">Voir mes commandes</a>
             </div>
         </div>
     </div>
+    
 </div>

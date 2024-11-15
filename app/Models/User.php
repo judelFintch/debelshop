@@ -20,7 +20,25 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'isActive',
+        'role',
     ];
+
+     // Vérification de l'état de l'utilisateur
+     /**
+     * Vérifie si l'utilisateur est actif.
+     *
+     * @return bool
+     */
+    public function isActive()
+    {
+        return (bool) $this->isActive; // Assurez-vous que la colonne 'isActive' est bien récupérée
+    }
+     // Vérification du rôle de l'utilisateur
+     public function isAdmin()
+     {
+         return $this->role === 3; // 
+     }
 
     /**
      * The attributes that should be hidden for serialization.
