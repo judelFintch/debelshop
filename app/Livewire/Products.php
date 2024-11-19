@@ -41,7 +41,7 @@ class Products extends Component
             ],
             12 => [
                 'title' => 'Bougie Boch',
-                'price' => 3,
+                'price' => 5,
                 'category_id' => 1,
                 'description' => 'B'
             ],
