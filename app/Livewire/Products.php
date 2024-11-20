@@ -39,12 +39,7 @@ class Products extends Component
                 'category_id' => 1,
                 'description' => 'Le véhicule Noah à 4 cylindres essence offre une excellente performance et une grande fiabilité, idéal pour les trajets en famille ou les longs voyages.'
             ],
-            12 => [
-                'title' => 'Bougie Boch',
-                'price' => 3,
-                'category_id' => 1,
-                'description' => 'B'
-            ],
+           
             2 => [
                 'title' => 'Alphard 2002',
                 'price' => 3000,
@@ -95,7 +90,7 @@ class Products extends Component
             ],
             10 => [
                 'title' => 'Bougie Boch',
-                'price' => 3,
+                'price' => 5,
                 'category_id' => 1,
                 'description' => 'Bougie d’allumage de marque Boch, garantissant un démarrage optimal du moteur et une performance fiable.'
             ]
@@ -121,7 +116,6 @@ class Products extends Component
             }
         }
     }
-
 
     public function render(): View
     {

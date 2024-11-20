@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 
 use App\Http\Controllers\ProfileController;
@@ -27,13 +27,10 @@ Route::middleware(['auth', 'verified', 'check.active'])->group(function () {
 // Routes de paiement
 Route::group(['prefix' => 'process'], function () {
     Route::post('/payment', [FlexPayController::class, 'handlePayment'])->name('payment');
-    
-
-   // Route::post('/payment', FlexPayController::class)->name('payment');
     Route::get('/accepted/payment', \App\Livewire\Payment\Success::class)->name('accepted.payment');
     Route::get('/rejected/payment', \App\Livewire\Payment\Reject::class)->name('rejected.payment');
     Route::get('/notification', MaxiNotifyPaymentController::class)->name('notification');
 });
 
 // Authentification
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
