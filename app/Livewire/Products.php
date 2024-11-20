@@ -117,7 +117,6 @@ class Products extends Component
         }
     }
 
-
     public function render(): View
     {
 

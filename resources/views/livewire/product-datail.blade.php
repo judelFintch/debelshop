@@ -21,7 +21,7 @@
             <div class="space-y-4 mt-4 md:mt-0">
                 <h4 class="text-purple-600 font-semibold">New: Version 2024</h4>
                 <h2 class="text-3xl font-bold uppercase">{{ $product->title }}</h2>
-                <span class="block text-lg font-medium">{{ $product->price }} $</span>
+                <span class="block text-lg font-medium">{{ $product->price * $quantity }}  $</span>
 
                 <p class="text-sm text-gray-600 leading-tight tracking-tight">{{ $product->description }}</p>
 
@@ -89,12 +89,13 @@
                     </a>
                     <div class="relative p-4 space-y-2 text-center">
                         <h3 class="font-semibold text-xl">{{ $product->title }}</h3>
-                        <span class="font-medium text-lg text-green-600">$ {{ $product->price }}</span>
+                        <span class="font-medium text-lg text-green-600">$ {{ $product->price }} </span>
                     </div>
                 </div>
             @endforeach
         </div>
     </section>
+
 
     <!-- Modal pour le paiement (par défaut masqué) -->
     <div id="paymentModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
@@ -104,6 +105,7 @@
                 @csrf
                 <!-- Champ caché pour l'ID du produit -->
                 <input type="hidden" name="product_id">
+                <input type="hidden" name="qte" value="{{ $quantity}}">
 
                 <!-- Champ Nom -->
                 <div class="mb-4">

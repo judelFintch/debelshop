@@ -20,10 +20,11 @@ class ProductDatail extends Component
     public Model $product;
 
     public $images = array(1, 2, 3);
-    public  $imageExtensions = ['jpg', 'jpeg', 'png']; // Liste des extensions à vérifier
-   
+    public $imageExtensions = ['jpg', 'jpeg', 'png']; // Liste des extensions à vérifier
+
     public $imagePath = null;
     public $colors = array(1, 2, 3);
+    public $quantity = 1;
 
 
 
@@ -47,17 +48,21 @@ class ProductDatail extends Component
     ])]
     public ?string $currency = '';
 
-    public function mount($id): void
+    public function mount(int $id): void
     {
-        $this->product = Product::find($id);
-       
+
+        // Chargement du produit depuis l'ID
+        $this->product = Product::findOrFail($id);
+
+        // Récupération de la quantité depuis l'URL, avec une valeur par défaut
+        $this->quantity = max((int) request()->query('quantity', 1), 1);
     }
     public function render(): View
     {
 
 
-       
-       
+
+
         return view('livewire.product-datail', [
             'products' => Product::paginate(4)
         ]);

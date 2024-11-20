@@ -26,16 +26,19 @@ class FlexPayController extends Controller
             'email' => 'required|email|max:255',
             'address' => 'required|string|max:255',
             'product_id' => 'required|exists:products,id',
+            'qte'=> 'required',
+
         ]);
+
 
         $product = Product::findOrFail($validatedData['product_id']);
 
         $randomNumber = rand(1, 100);
         $latestOrder = Order::latest()->first();
         $orderId = $latestOrder ? $latestOrder->id : 0;
-        $reference = sprintf("ORD/CME/DEBELSHOP/%s/%d/%d", date('Y-m-d'), $orderId, $randomNumber);
-        $priceInCents = intval($product->price * 100);
-
+        $reference = sprintf("ORD/CME/DBLSHOP/%s/%d/%d", date('Y-m-d'), $orderId, $randomNumber);
+        $totprice = $request->qte * $product->price;
+        $priceInCents = intval($totprice * 100);
         // Configuration du client Maxicash
         $maxicash = new Maxicash(
             new Credential(
@@ -76,7 +79,7 @@ class FlexPayController extends Controller
     
         ]);
 
-        // Redirection vers l'URL de paiement Maxicash
+         //Redirection vers l'URL de paiement Maxicash
         $paymentUrl = $maxicash->queryStringURLPayment($paymentEntry);
         return redirect()->to($paymentUrl);
     }

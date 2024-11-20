@@ -13,10 +13,6 @@
             align-items: center;
         }
     </style>
-
-
-
-
     <section class="relative w-full overflow-hidden" aria-label="Carrousel d'images">
         <div class="carousel-wrapper flex transition-transform duration-700">
             <div class="carousel-item w-full" aria-hidden="false">
@@ -78,28 +74,20 @@
                 <div class="relative transform transition-transform hover:scale-105 shadow-lg rounded-lg border border-gray-200 overflow-hidden product-item"
                     data-category="{{ $product->category }}">
                     <div class="relative w-full" style="padding-bottom: 75%;">
-
-
-
                         @php
-                            $imageExtensions = ['jpg', 'jpeg', 'png']; // Liste des extensions à vérifier
+                            $imageExtensions = ['jpg', 'jpeg', 'png'];
                             $imagePath = null;
-
-                            // Vérifie chaque extension jusqu'à trouver une image existante
                             foreach ($imageExtensions as $extension) {
                                 $path = public_path('img/' . $product->id . '.' . $extension);
                                 if (file_exists($path)) {
                                     $imagePath = asset('img/' . $product->id . '.' . $extension);
-                                                                break; // Si une image est trouvée, on arrête la boucle
-                                                            }
-                                                        }
+                                    break;
+                                }
+                            }
                         @endphp
-                        @if ($imagePath)
-                            <img src="{{ $imagePath }}"class="absolute top-0 left-0 w-full h-full object-cover object-center transition-transform duration-500 hover:scale-110"
-                                alt="Image du produit {{ $product->title }}">
-                        @else
-                            <img src="{{ asset('img/default.jpg') }}" alt="Image par défaut">
-                        @endif
+                        <img src="{{ $imagePath ?: asset('img/default.jpg') }}"
+                            class="absolute top-0 left-0 w-full h-full object-cover object-center transition-transform duration-500 hover:scale-110"
+                            alt="Image du produit {{ $product->title }}">
                     </div>
 
                     @if ($product->discount)
@@ -117,11 +105,10 @@
 
                     <div class="p-4 flex flex-col space-y-2">
                         <div class="flex justify-between items-center">
-                            --<a href=" {{route('show.product', $product->id) }}"
+                            <a href="{{ route('show.product', $product->id) }}"
                                 class="text-gray-900 font-bold text-lg">{{ $product->title }}</a>
                         </div>
 
-                        <!-- État de la disponibilité -->
                         <div class="flex items-center">
                             @if ($product->inStock)
                                 <span class="text-green-600 font-semibold">En Stock</span>
@@ -140,42 +127,27 @@
 
                         <span class="text-gray-900 text-lg font-bold">$ {{ $product->price }}</span>
 
-                        <!-- Gestion dynamique de la quantité -->
                         <div class="flex items-center justify-between">
                             <div class="flex items-center border border-gray-300 rounded-lg overflow-hidden">
                                 <button class="px-3 py-1 bg-gray-200 hover:bg-gray-300"
-                                    onclick="decrementQuantity({{ $product->id }})">-</button>
-                                <input disabled type="number" id="quantity-{{ $product->id }}" value="1"
-                                    min="1" max="1" class="w-12 text-center border-none" />
+                                    onclick="updateQuantity({{ $product->id }}, -1)">-</button>
+                                <input type="number" id="quantity-{{ $product->id }}" value="1" min="1"
+                                    class="w-12 text-center border-none" readonly />
                                 <button class="px-3 py-1 bg-gray-200 hover:bg-gray-300"
-                                    onclic="incrementQuantity({{ $product->id }})">+</button>
+                                    onclick="updateQuantity({{ $product->id }}, 1)">+</button>
                             </div>
-                            <div class="flex space-x-2">
-                                <button
-                                    class="bg-purple-600 text-white px-4 py-2 ml-4 hover:bg-purple-700 transition-colors duration-300 ease-out font-semibold rounded-lg"
-                                    onclick="addToCart({{ $product->id }})">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 inline-block" fill="none"
-                                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M3 3h18l-1.5 9H5.25L4.5 3zM5 15h14v6H5v-6z" />
-                                    </svg>
-
-                                </button>
-                                <a href=" {{route('show.product', $product->id) }}"
-                                    class="bg-blue-600 text-white px-4 py-2 ml-4 hover:bg-blue-700 transition-colors duration-300 ease-out font-semibold rounded-lg">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 inline-block"
-                                        fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M12 4.5v15m7.5-7.5h-15" />
-                                    </svg>
-
-                                </a>
-                            </div>
+                            <a id="detail-link-{{ $product->id }}" href="{{ route('show.product', $product->id) }}"
+                                class="bg-blue-600 text-white px-4 py-2 ml-4 hover:bg-blue-700 transition-colors duration-300 ease-out font-semibold rounded-lg"
+                                onclick="updateDetailLink(event, {{ $product->id }})">
+                                <span id="detail-text-{{ $product->id }}">Details</span>
+                            </a>
                         </div>
                     </div>
                 </div>
             @endforeach
         </div>
+
+
 
         <!-- Bouton Voir Tous les Produits -->
         <div class="pt-16 text-center">
@@ -236,23 +208,31 @@
 
     <x-cart></x-cart>
 
-    <script>
-        function incrementQuantity(productId) {
-            let quantityInput = document.getElementById('quantity-' + productId);
-            quantityInput.value = parseInt(quantityInput.value) + 1;
+
+
+    <script type="text/javascript">
+        function updateQuantity(productId, change) {
+            const quantityInput = document.getElementById(`quantity-${productId}`);
+            const detailText = document.getElementById(`detail-text-${productId}`);
+            let currentQuantity = parseInt(quantityInput.value);
+
+            // Calculer la nouvelle quantité (minimale: 1)
+            currentQuantity = Math.max(1, currentQuantity + change);
+            quantityInput.value = currentQuantity;
+
+            // Mettre à jour le texte du bouton "Détails"
+            detailText.textContent = `Payer (${currentQuantity})`;
         }
 
-        function decrementQuantity(productId) {
-            let quantityInput = document.getElementById('quantity-' + productId);
-            if (quantityInput.value > 1) {
-                quantityInput.value = parseInt(quantityInput.value) - 1;
-            }
-        }
+        function updateDetailLink(event, productId) {
+            event.preventDefault(); // Empêche le lien par défaut de se charger
+            const quantity = document.getElementById(`quantity-${productId}`).value;
 
-        function addToCart(productId) {
-            let quantityInput = document.getElementById('quantity-' + productId);
-            let quantity = quantityInput.value;
-            // Logique pour ajouter au panier
-            console.log(`Produit ID: ${productId}, Quantité: ${quantity}`);
+            // Mettre à jour l'URL avec la quantité
+            const detailLink = document.getElementById(`detail-link-${productId}`);
+            detailLink.href = `${detailLink.href.split('?')[0]}?quantity=${quantity}`;
+
+            // Redirige vers le lien mis à jour
+            window.location.href = detailLink.href;
         }
     </script>
